@@ -410,6 +410,54 @@ input[type=text]:focus {
     max-width: 40%;
 }
 
+//-----------------------MemberCotent------------------
+.memberdec {
+    position: relative;
+}
+.mainCotent {
+    max-width: 100%;
+}
+
+.registerBox2 {
+    display:none;
+}
+.mobileIcon {
+    display:none;
+}
+
+
+@media screen and (max-width: 1250px) {
+    .sideBarContent {
+        background-color: #fedfe1;
+        height: 38em;
+    }
+
+    .sidebarIcon {
+        float: left;
+        max-width: 30%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .sideBar {
+        display: none;
+    }
+    .registerBox {
+        display: none;
+    }
+    .registerBox2 {
+        display: flex !important;
+        position: absolute;
+        top: -5%;
+        max-width: 100%;
+    }
+    .mobileIcon {
+        display: block !important;
+        max-width: 100%;
+    }
+}
+
+
+
 //-----------------------Top-----------------------
 .top {
     color: #dd6b88;
@@ -424,3 +472,4 @@ input[type=text]:focus {
     padding: 10px;
     font-family: Kefa;
 }
+
