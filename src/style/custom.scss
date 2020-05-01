@@ -414,14 +414,17 @@ input[type=text]:focus {
 .memberdec {
     position: relative;
 }
+
 .mainCotent {
     max-width: 100%;
 }
+
 .registerBox2 {
-    display:none;
+    display: none;
 }
+
 .mobileIcon {
-    display:none;
+    display: none;
 }
 
 
@@ -436,26 +439,145 @@ input[type=text]:focus {
         max-width: 30%;
     }
 }
+
 @media screen and (max-width: 1000px) {
     .sideBar {
         display: none;
     }
+
     .registerBox {
         display: none;
     }
+
     .registerBox2 {
         display: flex !important;
         position: absolute;
         top: -5%;
         max-width: 100%;
     }
+
     .mobileIcon {
         display: block !important;
         max-width: 100%;
     }
 }
 
+//---------------------editAccountCotent------------------------
+* {
+    // border:solid 1px black;
+}
 
+.lastpage,
+.MobileEditcontent {
+    display: none;
+}
+
+.accountCotent {
+    background-color: #fedfe1;
+    height: 40em;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.editTable {
+    color: #656765
+}
+
+.editMemberIcon {
+    border-bottom: 1px solid #c9cfc9;
+}
+
+.chooseAvatar {
+    margin-right: 25%;
+    margin-top: 15%;
+    max-width: 25%;
+    background-color: #e16b8c;
+    color: white;
+    border-radius: 10px;
+    height: 35px;
+    z-index: 1;
+}
+
+.accountRow {
+    background-color: #fff5f6;
+    border-bottom: 1px solid #c9cfc9;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #656765;
+    height: 5em;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.accountText {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #fff5f6;
+}
+
+#email {
+    visibility: hidden;
+}
+
+.accountRow2 {
+    border-bottom: 1px solid #c9cfc9;
+    padding-top: 10px;
+    color: #656765;
+    height: 5em;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.nickName,
+.cellphone {
+    border-radius: 10px;
+    width: 100%;
+    border: #a9ada9 1px solid
+}
+
+.address {
+    background-color: #fff5f6;
+    height: 14em
+}
+
+.city {
+    border-radius: 10px;
+    border: #a9ada9 1px solid;
+    width: 80%;
+}
+
+.addressCotent {
+    border-radius: 10px;
+    width: 100%;
+    border: #a9ada9 1px solid;
+    margin-top: 10px;
+    height: 5em;
+}
+
+.buttonMobile {
+    display: none;
+}
+
+#lastRow {
+    background-color: #fedfe1;
+    height: 5em;
+    border-radius: 0 0 15px 15px;
+}
+
+.necessaryItem {
+    background-color: #e16b8c;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .lastpage,
+    .MobileEditcontent {
+        display: block !important;
+    }
+    .buttonMobile {
+        display: flex !important;
+    }
+}
 
 //-----------------------Top-----------------------
 .top {
@@ -471,4 +593,3 @@ input[type=text]:focus {
     padding: 10px;
     font-family: Kefa;
 }
-

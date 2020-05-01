@@ -69,7 +69,7 @@ function Member() {
           </div>
         </div>
 
-        <div className="col-3 side-bar"></div>
+        <div className="col-3 sideBar"></div>
       </div>
       <Top />
     </>
