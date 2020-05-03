@@ -79,10 +79,23 @@
     }
 }
 
-//---------------------editAccountCotent------------------------
-//   * {
-//       border:solid 1px black;
-//   }
+//---------------------Account----------------------------
+.editButtonMobile {
+    display:none;
+}
+@media screen and (max-width: 1000px) {
+    .editButton {
+        display: none;
+    }
+    .editButtonMobile {
+        display:flex !important;
+    }
+}
+
+//---------------------editAccountContent------------------------
+// * {
+//     border: solid 1px black;
+// }
 
 .lastpage,
 .MobileEditcontent,
@@ -105,11 +118,13 @@
     z-index: 1;
 }
 
-
+// * {
+//     border: 1px solid black;
+// }
 
 .avatar {
     margin-right: 10%;
-    margin-top:20%;
+    margin-top: 20%;
     z-index: 1;
     background-color: #e16b8c;
     color: white;
@@ -150,14 +165,6 @@
 
 .address {
     height: 14em;
-}
-
-.addressCotent {
-    border-radius: 10px;
-    width: 100%;
-    border: #a9ada9 1px solid;
-    margin-top: 10px;
-    height: 5em;
 }
 
 .lastRow {

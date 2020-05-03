@@ -3,7 +3,7 @@ import SideBar from '../components/SideBar';
 import Top from '../components/Top';
 import Address from '../components/Address';
 
-function EditAccount() {
+function Account() {
   return (
     <>
       <div className="row">
@@ -32,9 +32,6 @@ function EditAccount() {
                           alt="memberIconForSideBar"
                         />
                       </span>
-                      <button className="chooseAvatar text-center">
-                        選擇圖像
-                      </button>
                     </div>
                   </tr>
 
@@ -65,9 +62,7 @@ function EditAccount() {
                         <span className="necessaryItem">必填</span>
                       </div>
                       <div className="col-1"></div>
-                      <div className="col-8 ">
-                        <input className="nickName" type="text" />
-                      </div>
+                      <div className="col-8 "></div>
                     </div>
                   </tr>
 
@@ -76,15 +71,6 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">性別</div>
                       <div className="col-1"></div>
-                      <div className="col">
-                        <select style={{ color: '#656765' }}>
-                          <option selected disabled>
-                            請選擇
-                          </option>
-                          <option>男</option>
-                          <option>女</option>
-                        </select>
-                      </div>
                     </div>
                   </tr>
                   <tr className="bBorder">
@@ -92,15 +78,6 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">生日</div>
                       <div className="col-1"></div>
-                      <div className="col">
-                        <input
-                          style={{ color: '#656765' }}
-                          placeholder=""
-                          type="date"
-                          name="dateofbirth"
-                          id="dateofbirth"
-                        />
-                      </div>
                     </div>
                   </tr>
 
@@ -112,9 +89,7 @@ function EditAccount() {
                         <span className="necessaryItem">必填</span>
                       </div>
                       <div className="col-1"></div>
-                      <div className="col-8">
-                        <input type="text" className="cellphone" />
-                      </div>
+                      <div className="col-8"></div>
                     </div>
                   </tr>
 
@@ -126,19 +101,21 @@ function EditAccount() {
                         <span className="necessaryItem">必填</span>
                       </div>
                       <div className="col-1"></div>
-                      <div className="col-3">
+                      <div className="col-3" style={{ visibility: 'hidden' }}>
                         <p>縣市</p>
-                        <p>區/鄉/鎮</p>
-                        <p>郵遞區號</p>
                       </div>
-                      <div className="col-6">
+                      <div className="col-6" style={{ visibility: 'hidden' }}>
                         <Address style={{ textAlign: 'left', textIndent: 0 }} />
                       </div>
                       <div className="col-12"></div>
                       <div className="col-1"></div>
                       <input
                         type="text"
-                        style={{ height: '6em', width: '80%' }}
+                        style={{
+                          height: '6em',
+                          width: '80%',
+                          visibility: 'hidden',
+                        }}
                       />
                     </div>
                   </tr>
@@ -147,14 +124,12 @@ function EditAccount() {
               </table>
             </div>
           </form>
-          <div className="row buttonMobile">
-            <div className="col-1"></div>
-            <div className="col-5">
-              <img src={require('../images/cancel2.svg')} alt="cancel2" />
-            </div>
-            <div className="col-5">
-              <img src={require('../images/save2.svg')} alt="save2" />
-            </div>
+          <div class="row editButtonMobile">
+            <div class="col-3"></div>
+            <img src={require('../images/editButton.svg')} alt="editButton" />
+            <div class="col-12"></div>
+            <div class="col-3"></div>
+            <img src={require('../images/logout.svg')} alt="logout" />
           </div>
 
           <form action="" className="row content">
@@ -173,7 +148,6 @@ function EditAccount() {
                           alt="memberIconForSideBar"
                         />
                       </div>
-                      <button className="text-center avatar">選擇圖像</button>
                     </div>
                   </tr>
 
@@ -204,9 +178,7 @@ function EditAccount() {
                         <span className="necessaryItem">必填</span>
                       </div>
                       <div className="col-1"></div>
-                      <div className="col-8 ">
-                        <input className="nickName" type="text" />
-                      </div>
+                      <div className="col-8 "></div>
                     </div>
                   </tr>
 
@@ -215,15 +187,6 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">性別</div>
                       <div className="col-1"></div>
-                      <div className="col-6">
-                        <select style={{ color: '#656765' }}>
-                          <option selected disabled>
-                            請選擇
-                          </option>
-                          <option>男</option>
-                          <option>女</option>
-                        </select>
-                      </div>
                     </div>
                   </tr>
                   <tr className="bBorder">
@@ -231,15 +194,6 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">生日</div>
                       <div className="col-1"></div>
-                      <div className="col">
-                        <input
-                          style={{ color: '#656765' }}
-                          placeholder=""
-                          type="date"
-                          name="dateofbirth"
-                          id="dateofbirth"
-                        />
-                      </div>
                     </div>
                   </tr>
 
@@ -251,9 +205,7 @@ function EditAccount() {
                         <span className="necessaryItem">必填</span>
                       </div>
                       <div className="col-1"></div>
-                      <div className="col-8">
-                        <input type="text" className="cellphone" />
-                      </div>
+                      <div className="col-8"></div>
                     </div>
                   </tr>
 
@@ -264,18 +216,16 @@ function EditAccount() {
                         地址&nbsp;&nbsp;
                         <span className="necessaryItem">必填</span>
                       </div>
-                      <div className="col-1"></div>
-                      <div className="col-3">
+
+                      <div className="col-3" style={{ visibility: 'hidden' }}>
                         <p>縣市</p>
-                        <p>區/鄉/鎮</p>
-                        <p>郵遞區號</p>
                       </div>
-                      <div className="col-4">
+                      <div className="col-4" style={{ visibility: 'hidden' }}>
                         <Address />
                       </div>
                       <div className="col-12"></div>
                       <div className="col-1"></div>
-                      <div className="col-10">
+                      <div className="col-10" style={{ visibility: 'hidden' }}>
                         <input type="text" style={{ height: '6em' }} />
                       </div>
                     </div>
@@ -285,20 +235,16 @@ function EditAccount() {
               </table>
             </div>
           </form>
-          <div className="row button">
-            <div className="col-6">
-              <img src={require('../images/cancel.svg')} alt="cancel" />
-            </div>
-            <div className="col-6">
-              <img src={require('../images/save.svg')} alt="save" />
-            </div>
+        </div>
+        <div className="col-3 sideBar">
+          <div className="editButton" style={{ marginTop: '80%' }}>
+            <img src={require('../images/editButton.svg')} alt="editButton" />
           </div>
         </div>
-        <div className="col-3 sideBar"></div>
       </div>
       <Top />
     </>
   );
 }
 
-export default EditAccount;
+export default Account;

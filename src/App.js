@@ -7,6 +7,8 @@ import Uielements from './pages/Uielements';
 
 import Member from './pages/Member';
 import EditAccount from './pages/EditAccount';
+import CreditCard from './pages/CreditCard';
+import Account from './pages/Account';
 import Menu from './components/Menu';
 function App() {
   return (
@@ -28,7 +30,9 @@ function App() {
           </Route>
         </Switch>
         <Member />
+        <Account />
         <EditAccount />
+        <CreditCard />
       </>
     </Router>
   );
