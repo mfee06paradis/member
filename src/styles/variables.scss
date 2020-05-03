@@ -68,3 +68,19 @@ $table-hover-color: $body-color;
 $table-hover-bg: rgba($primary, .075);
 $table-border-color: rgb(203, 203, 203);
 $input-focus-border-color: rgba($success, .25);
+
+
+//-------------- RWD -------------- 
+$phone-media:480px;
+
+@mixin pc-width() {
+    @media all and (min-width: $phone-media) {
+        @content;
+    }
+}
+
+@mixin phone-width() {
+    @media all and (max-width: $phone-media) {
+        @content;
+    }
+}

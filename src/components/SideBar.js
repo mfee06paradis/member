@@ -2,10 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function SideBar() {
-  const account = () => {
-    console.log('123');
-  };
-
   return (
     <>
       <div className="col-3 sideBar">

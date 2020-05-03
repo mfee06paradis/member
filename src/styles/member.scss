@@ -1,0 +1,206 @@
+@import './dropSelect.scss';
+// ----------------------SideBar-------------------------
+
+.sideBarText {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: left;
+    color: #cb4042;
+    font-family: Kefa;
+}
+
+.sideItems {
+    font-size: 16px;
+    font-family: NaikaiFont;
+}
+
+.sidehr {
+    color: #808080;
+}
+
+.sideBarContent {
+    background-color: #fedfe1;
+    height: 45em;
+}
+
+.sideBarIcon {
+    float: left;
+    max-width: 40%;
+}
+
+//-----------------------MemberCotent------------------
+.memberdec {
+    position: relative;
+}
+
+.mainCotent {
+    max-width: 100%;
+}
+
+.registerBox2 {
+    display: none;
+}
+
+.mobileIcon {
+    display: none;
+}
+
+@media screen and (max-width: 1250px) {
+    .sideBarContent {
+        background-color: #fedfe1;
+        height: 38em;
+    }
+
+    .sidebarIcon {
+        float: left;
+        max-width: 30%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .sideBar {
+        display: none;
+    }
+
+    .registerBox {
+        display: none;
+    }
+
+    .registerBox2 {
+        display: flex !important;
+        position: absolute;
+        top: -5%;
+        max-width: 100%;
+    }
+
+    .mobileIcon {
+        display: block !important;
+        max-width: 100%;
+    }
+}
+
+//---------------------editAccountCotent------------------------
+//   * {
+//       border:solid 1px black;
+//   }
+
+.lastpage,
+.MobileEditcontent,
+.buttonMobile {
+    display: none;
+}
+
+.editTable {
+    color: #656765;
+}
+
+.chooseAvatar {
+    margin-right: 25%;
+    margin-top: 15%;
+    max-width: 25%;
+    background-color: #e16b8c;
+    color: white;
+    border-radius: 10px;
+    height: 35px;
+    z-index: 1;
+}
+
+
+
+.avatar {
+    margin-right: 10%;
+    margin-top:20%;
+    z-index: 1;
+    background-color: #e16b8c;
+    color: white;
+    border-radius: 10px;
+    height: 35px;
+    max-width: 15%;
+}
+
+.bBorder {
+    border-bottom: 1px solid #a9ada9;
+}
+
+.accountRow {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #656765;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.accountRow2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #656765;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.accountText {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #fff5f6;
+}
+
+.nickName,
+.cellphone,
+.city {
+    width: 100%;
+    border: #a9ada9 1px solid;
+}
+
+.address {
+    height: 14em;
+}
+
+.addressCotent {
+    border-radius: 10px;
+    width: 100%;
+    border: #a9ada9 1px solid;
+    margin-top: 10px;
+    height: 5em;
+}
+
+.lastRow {
+    height: 6em;
+}
+
+.necessaryItem {
+    background-color: #e16b8c;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .content,
+    .button {
+        display: none;
+    }
+
+    .lastpage,
+    .MobileEditcontent {
+        display: block !important;
+    }
+
+    .buttonMobile {
+        display: flex !important;
+    }
+}
+
+//-----------------------Top-----------------------
+.top {
+    color: #dd6b88;
+    text-decoration: underline;
+    letter-spacing: 5px;
+    position: fixed;
+    right: 10%;
+    bottom: 1%;
+    display: block;
+    width: 60px;
+    font-size: 20px;
+    padding: 10px;
+    font-family: Kefa;
+}

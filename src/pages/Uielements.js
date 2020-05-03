@@ -84,8 +84,6 @@ function Uielements() {
           </Row>
         </div>
       </div>
-      <hr className="hr-pink"></hr>
-
       <div className="bg-pink">
         <hr className="hr-white"></hr>
         <div className="container">
@@ -148,6 +146,10 @@ function Uielements() {
                             <span className="table-label">必填</span>
                           </td>
                           <td>
+                            <div className="rwd-show">
+                              欄位
+                              <span className="table-label">必填</span>
+                            </div>
                             <input type="text" clasName="input-text" />
                           </td>
                         </tr>

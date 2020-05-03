@@ -19,18 +19,20 @@ class HelloWorldClass extends React.Component {
     return (
       <>
         <h1>類別型元件</h1>
-        <input 
-        type="text" 
-        value={this.state.inputText}  // 將state的值設定給name的value
-        onChange={(event)=> this.setState({ inputText : event.target.value})}   
-        //傳入event要取觸發事件的元件  event.target : 永遠指向觸發事件的 DOM 物件
+        <input
+          type="text"
+          value={this.state.inputText} // 將state的值設定給name的value
+          onChange={(event) => this.setState({ inputText: event.target.value })}
+          //傳入event要取觸發事件的元件  event.target : 永遠指向觸發事件的 DOM 物件
         />
         {/* 利用從父母元件得到的sendMe方法，傳資料給父母 */}
         <button
-        onClick = {()=>{
-          this.props.sendMe(this.state.inputText)
-        }}
-        >送資料到App(父元件)</button>
+          onClick={() => {
+            this.props.sendMe(this.state.inputText);
+          }}
+        >
+          送資料到App(父元件)
+        </button>
       </>
     );
   }
@@ -44,9 +46,8 @@ class HelloWorldClass extends React.Component {
 
 //設定預設的props值
 // HelloWorldClass.defaultProps = {
-//   text : '很不好', 
+//   text : '很不好',
 //   total: 0
 // }
-
 
 export default HelloWorldClass;
