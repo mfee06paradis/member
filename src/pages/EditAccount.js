@@ -215,7 +215,7 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">性別</div>
                       <div className="col-1"></div>
-                      <div className="col">
+                      <div className="col-6">
                         <select style={{ color: '#656765' }}>
                           <option selected disabled>
                             請選擇
@@ -270,15 +270,14 @@ function EditAccount() {
                         <p>區/鄉/鎮</p>
                         <p>郵遞區號</p>
                       </div>
-                      <div className="col-6">
-                        <Address style={{ textAlign: 'left', textIndent: 0 }} />
+                      <div className="col-4">
+                        <Address />
                       </div>
                       <div className="col-12"></div>
                       <div className="col-1"></div>
-                      <input
-                        type="text"
-                        style={{ height: '6em', width: '80%' }}
-                      />
+                      <div className="col-10">
+                        <input type="text" style={{ height: '6em' }} />
+                      </div>
                     </div>
                   </tr>
                   <tr className="lastRow"></tr>
