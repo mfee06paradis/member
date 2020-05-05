@@ -1,3 +1,4 @@
+@import './variables.scss';
 @import './dropSelect.scss';
 // ----------------------SideBar-------------------------
 
@@ -6,12 +7,12 @@
     font-size: 20px;
     text-align: left;
     color: #cb4042;
-    font-family: Kefa;
+    font-family: $font-family-title;
 }
 
 .sideItems {
     font-size: 16px;
-    font-family: NaikaiFont;
+    font-family: $font-family-title;
 }
 
 .sidehr {
@@ -19,7 +20,7 @@
 }
 
 .sideBarContent {
-    background-color: #fedfe1;
+    background-color: $pink-light;
     height: 45em;
 }
 
@@ -47,7 +48,7 @@
 
 @media screen and (max-width: 1250px) {
     .sideBarContent {
-        background-color: #fedfe1;
+        background-color: $pink-light;
         height: 38em;
     }
 
@@ -77,6 +78,12 @@
         display: block !important;
         max-width: 100%;
     }
+
+    .mobileIcon:hover {
+        transform: scale(1.10);
+        filter: opacity(0.8)
+    }
+
 }
 
 //---------------------Account----------------------------
@@ -106,7 +113,7 @@
 }
 
 .editTable {
-    color: #656765;
+    color: $grey-mid;
 }
 
 .chooseAvatar {
@@ -114,7 +121,7 @@
     margin-top: 15%;
     max-width: 25%;
     background-color: #e16b8c;
-    color: white;
+    color: $white;
     border-radius: 10px;
     height: 35px;
     z-index: 1;
@@ -129,7 +136,7 @@
     margin-top: 20%;
     z-index: 1;
     background-color: #e16b8c;
-    color: white;
+    color: $white;
     border-radius: 10px;
     height: 35px;
     max-width: 15%;
@@ -142,19 +149,19 @@
 .accountRow {
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #656765;
-    font-family: 'Noto Sans TC', sans-serif;
+    color: $grey-mid;
+    font-family: $font-family-content;
 }
 
 .accountRow2 {
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #656765;
-    font-family: 'Noto Sans TC', sans-serif;
+    color: $grey-mid;
+    font-family: $font-family-content;
 }
 
 .accountText {
-    font-family: 'Noto Sans TC', sans-serif;
+    font-family: $font-family-content;
     background-color: #fff5f6;
 }
 
@@ -173,12 +180,12 @@
     height: 6em;
 }
 
-.necessaryItem {
-    background-color: #e16b8c;
-    color: white;
-    border-radius: 5px;
-    font-size: 12px;
-}
+// .necessaryItem {
+//     background-color: #e16b8c;
+//     color: $white;
+//     border-radius: 5px;
+//     font-size: 12px;
+// }
 
 
 
@@ -192,6 +199,7 @@
     .lastpage {
         display: block !important;
     }
+
     .MobileEditcontent {
         display: block !important;
     }
@@ -223,7 +231,7 @@
 }
 
 .creditCardCotent {
-    background-image: linear-gradient(#fedfe1, #dd6b88);
+    background-image: linear-gradient($pink-light, $pink-dark);
     height: 30em;
     width: 100%;
     border-radius: 15px;
@@ -245,7 +253,7 @@
 
 //-----------------------Top-----------------------
 .top {
-    color: #dd6b88;
+    color: $pink-dark;
     text-decoration: underline;
     letter-spacing: 5px;
     position: fixed;
@@ -255,5 +263,5 @@
     width: 60px;
     font-size: 20px;
     padding: 10px;
-    font-family: Kefa;
+    font-family: $font-family-title;
 }

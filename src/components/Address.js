@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import TWzipcode from 'react-twzipcode';
 
 class Address extends Component {

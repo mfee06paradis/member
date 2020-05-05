@@ -2,12 +2,14 @@ import React from 'react';
 import SideBar from '../components/SideBar';
 import Top from '../components/Top';
 import { NavLink } from 'react-router-dom';
-import EditAccount from './EditAccount';
+import '../styles/member.scss';
+
 function Member() {
   return (
     <>
-      <div className="row">
+      <div className="row bg-white">
         <SideBar />
+
         <div className="col mainCotent">
           <div className="col-12 memberdec">
             <img src={require('../images/memberdec.svg')} alt="memberdec" />
@@ -25,7 +27,7 @@ function Member() {
           <div className="col-12">
             <img src={require('../images/pink-ribbon.svg')} alt="pinkribbon" />
           </div>
-          <NavLink to="/Account">
+          <NavLink to="/Account" className="nav-link" activeClassName="active">
             <div className="col-12">
               <img
                 className="registerBox"
@@ -34,34 +36,60 @@ function Member() {
               />
             </div>
           </NavLink>
+
+          {/* -------------------Mobile-------------------- */}
           <div className="row">
             <div className="col-6">
-              <img
-                src={require('../images/account2.svg')}
-                alt="account2"
-                className="mobileIcon"
-              />
+              <NavLink
+                to="/Account"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img
+                  src={require('../images/account2.svg')}
+                  alt="account2"
+                  className="mobileIcon"
+                />
+              </NavLink>
             </div>
             <div className="col-6">
-              <img
-                src={require('../images/creditCard2.svg')}
-                alt="creditCard2"
-                className="mobileIcon"
-              />
+              <NavLink
+                to="/CreditCard"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img
+                  src={require('../images/creditCard2.svg')}
+                  alt="creditCard2"
+                  className="mobileIcon"
+                />
+              </NavLink>
             </div>
             <div className="col-6">
-              <img
-                src={require('../images/myorder2.svg')}
-                alt="myorder2"
-                className="mobileIcon"
-              />
+              <NavLink
+                to="/myorders"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img
+                  src={require('../images/myorder2.svg')}
+                  alt="myorder2"
+                  className="mobileIcon"
+                />
+              </NavLink>
             </div>
             <div className="col-6">
-              <img
-                src={require('../images/myfavorite2.svg')}
-                alt="myfavorite2"
-                className="mobileIcon"
-              />
+              <NavLink
+                to="/myfavorite"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img
+                  src={require('../images/myfavorite2.svg')}
+                  alt="myfavorite2"
+                  className="mobileIcon"
+                />
+              </NavLink>
             </div>
             <div className="col-2"></div>
             <div className="col-8">
@@ -72,8 +100,8 @@ function Member() {
               />
             </div>
           </div>
+          {/* -------------------Mobile-------------------- */}
         </div>
-
         <div className="col-3 sideBar"></div>
       </div>
       <Top />

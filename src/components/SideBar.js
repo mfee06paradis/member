@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 function SideBar() {
   return (
     <>
-      <div className="col-3 sideBar">
+      <div className="col-3 sideBar ">
         <div className="col-8 sideBarContent">
           <img
             src={require('../images/member-icon-for-sidebar.svg')}
@@ -15,7 +15,11 @@ function SideBar() {
             alt="pinkRibbon"
           />
 
-          <NavLink to="/Account" className="row sideBarText">
+          <NavLink
+            to="/Account"
+            className="row sideBarText nav-link"
+            activeClassName="active"
+          >
             <img
               className="sideBarIcon"
               src={require('../images/account.svg')}
@@ -28,7 +32,11 @@ function SideBar() {
           </NavLink>
 
           <hr className="sidehr" />
-          <NavLink to="/CreditCard" className="row sideBarText">
+          <NavLink
+            to="/CreditCard"
+            className="row sideBarText nav-link"
+            activeClassName="active"
+          >
             <img
               className="sideBarIcon"
               src={require('../images/creditCard.svg')}
@@ -41,7 +49,11 @@ function SideBar() {
           </NavLink>
 
           <hr className="sidehr" />
-          <NavLink to="/" className="row sideBarText">
+          <NavLink
+            to="/myorders"
+            className="row sideBarText nav-link"
+            activeClassName="active"
+          >
             <img
               className="sideBarIcon"
               src={require('../images/myorders.svg')}
@@ -54,7 +66,11 @@ function SideBar() {
           </NavLink>
 
           <hr className="sidehr" />
-          <NavLink to="/" className="row sideBarText">
+          <NavLink
+            to="/myfavorite"
+            className="row sideBarText nav-link"
+            activeClassName="active"
+          >
             <img
               className="sideBarIcon"
               src={require('../images/myfavorite.svg')}
@@ -68,7 +84,7 @@ function SideBar() {
 
           <hr className="sidehr" />
           <div>
-            <NavLink to="/member">
+            <NavLink to="/member" className="nav-link" activeClassName="active">
               <img src={require('../images/logout.svg')} alt="logout" />
             </NavLink>
           </div>

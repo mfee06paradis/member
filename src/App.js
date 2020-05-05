@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import Cart from './pages/Cart';
 import ProductList from './pages/ProductList';
@@ -19,8 +20,9 @@ function App() {
     <Router>
       <>
         <Menu />
+
         <Switch>
-          {/* <Route path="/Uielements">
+          <Route path="/Uielements">
             <Uielements />
           </Route>
           <Route path="/cart">
@@ -28,16 +30,21 @@ function App() {
           </Route>
           <Route path="/product">
             <Product />
-          </Route> */}
-          <Route path="/member">
+          </Route>
+          <Route exact path="/">
+            <ProductList />
+          </Route>
+          <Route exact path="/member">
             <Member />
           </Route>
-          <Route>
-            <Account path="/account" />
+          <Route path="/EditAccount">
+            <EditAccount />
           </Route>
-
-          <Route path="*">
-            <NotFoundPage />
+          <Route path="/CreditCard">
+            <CreditCard />
+          </Route>
+          <Route path="/account">
+            <Account />
           </Route>
         </Switch>
       </>

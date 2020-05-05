@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Top from '../components/Top';
 import SideBar from '../components/SideBar';
 import AnimatedVisibility from '../components/AnimatedVisibility';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import '../styles/member.scss';
+import { withRouter } from 'react-router-dom';
 
-function CreditCard() {
+function CreditCard(props) {
   const [visible, setVisible] = useState(true);
   function ShowMe() {
     setVisible(true);
@@ -12,15 +13,6 @@ function CreditCard() {
   function hideMe() {
     setVisible(false);
   }
-  //   const addCard = function () {
-  //     document.getElementById('creditCardCotent').style.visibility = 'visible';
-  //     document.getElementById('button').style.visibility = 'visible';
-  //   };
-
-  //   const cancelAddCard = function () {
-  //     document.getElementById('creditCardCotent').style.visibility = 'hidden';
-  //     document.getElementById('button').style.visibility = 'hidden';
-  //   };
 
   const checkCardNumber = function () {
     let x = document.getElementById('cardNumber').value;
@@ -65,7 +57,7 @@ function CreditCard() {
   };
   return (
     <>
-      <div className="row">
+      <div className="row bg-white">
         <SideBar />
         <div className="col mainCotent">
           <div>
@@ -78,6 +70,8 @@ function CreditCard() {
             <div className="col-lg-4"></div>
             <div className="col-lg-3" onClick={ShowMe}>
               <img
+                className="nav-link"
+                activeClassName="active"
                 src={require('../images/addCard.svg')}
                 alt="addCard"
                 style={{ cursor: 'copy' }}
@@ -87,11 +81,21 @@ function CreditCard() {
 
           <div className="col-1"></div>
           <div className="col-6 lastpage">
-            <img src={require('../images/lastpage.svg')} alt="lastpage" />
+            <img
+              onClick={() => {
+                props.history.goBack();
+              }}
+              src={require('../images/lastpage.svg')}
+              alt="lastpage"
+              className="nav-link"
+              activeClassName="active"
+            />
           </div>
           <div className="row creditCardBlank" style={{ display: 'none' }}>
             <div className="col-4" onClick={ShowMe}>
               <img
+                className="nav-link"
+                activeClassName="active"
                 src={require('../images/addCard.svg')}
                 alt="addCard"
                 style={{ cursor: 'copy' }}
@@ -184,6 +188,8 @@ function CreditCard() {
             <div className="row creditCardButton">
               <div className="col-6" onClick={hideMe}>
                 <img
+                  className="nav-link"
+                  activeClassName="active"
                   src={require('../images/cancel.svg')}
                   alt="cancel"
                   style={{ cursor: 'pointer' }}
@@ -202,6 +208,8 @@ function CreditCard() {
               <div className="col-1"></div>
               <div className="col-5" onClick={hideMe}>
                 <img
+                  className="nav-link"
+                  activeClassName="active"
                   src={require('../images/cancel2.svg')}
                   alt="cancel"
                   style={{ cursor: 'pointer' }}
@@ -209,6 +217,8 @@ function CreditCard() {
               </div>
               <div className="col-5" onClick={hideMe}>
                 <img
+                  className="nav-link"
+                  activeClassName="active"
                   src={require('../images/savecard2.svg')}
                   alt="savecard"
                   style={{ cursor: 'pointer' }}
@@ -224,4 +234,4 @@ function CreditCard() {
   );
 }
 
-export default CreditCard;
+export default withRouter(CreditCard);

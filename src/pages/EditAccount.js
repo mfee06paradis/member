@@ -3,11 +3,13 @@ import SideBar from '../components/SideBar';
 import Top from '../components/Top';
 import Address from '../components/Address';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import '../styles/member.scss';
 
-function EditAccount() {
+function EditAccount(props) {
   return (
     <>
-      <div className="row">
+      <div className="row bg-white">
         <SideBar />
 
         <div className="col mainCotent">
@@ -17,12 +19,18 @@ function EditAccount() {
           <div className="row">
             <div className="col-1"></div>
             <div className="col-6 lastpage">
-              <NavLink to="/Account">
-                <img src={require('../images/lastpage.svg')} alt="lastpage" />
-              </NavLink>
+              <img
+                src={require('../images/lastpage.svg')}
+                alt="lastpage"
+                className="nav-link"
+                activeClassName="active"
+                onClick={() => {
+                  props.history.goBack();
+                }}
+              />
             </div>
           </div>
-
+          {/* -----------------------Mobile-------------------------- */}
           <form action="" className="row MobileEditcontent">
             <div className="col-8 container table-bg">
               <table className="editTable">
@@ -65,7 +73,7 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">
                         暱稱&nbsp;&nbsp;
-                        <span className="necessaryItem">必填</span>
+                        <span className="table-label">必填</span>
                       </div>
                       <div className="col-1"></div>
                       <div className="col-8 ">
@@ -112,7 +120,7 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">
                         手機&nbsp;&nbsp;
-                        <span className="necessaryItem">必填</span>
+                        <span className="table-label">必填</span>
                       </div>
                       <div className="col-1"></div>
                       <div className="col-8">
@@ -126,7 +134,7 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">
                         地址&nbsp;&nbsp;
-                        <span className="necessaryItem">必填</span>
+                        <span className="table-label">必填</span>
                       </div>
                       <div className="col-1"></div>
                       <div className="col-3">
@@ -153,12 +161,25 @@ function EditAccount() {
           <div className="row buttonMobile">
             <div className="col-1"></div>
             <div className="col-5">
-              <img src={require('../images/cancel2.svg')} alt="cancel2" />
+              <NavLink
+                to="/Account"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img src={require('../images/cancel2.svg')} alt="cancel2" />
+              </NavLink>
             </div>
             <div className="col-5">
-              <img src={require('../images/save2.svg')} alt="save2" />
+              <NavLink
+                to="/Account"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img src={require('../images/save2.svg')} alt="save2" />
+              </NavLink>
             </div>
           </div>
+          {/* -----------------------Mobile-------------------------- */}
 
           <form action="" className="row content">
             <div className="col-lg-12 container table-bg">
@@ -204,7 +225,7 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">
                         暱稱&nbsp;&nbsp;
-                        <span className="necessaryItem">必填</span>
+                        <span className="table-label">必填</span>
                       </div>
                       <div className="col-1"></div>
                       <div className="col-8 ">
@@ -251,7 +272,7 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">
                         手機&nbsp;&nbsp;
-                        <span className="necessaryItem">必填</span>
+                        <span className="table-label">必填</span>
                       </div>
                       <div className="col-1"></div>
                       <div className="col-8">
@@ -265,7 +286,7 @@ function EditAccount() {
                       <div className="col-1"></div>
                       <div className="col-11">
                         地址&nbsp;&nbsp;
-                        <span className="necessaryItem">必填</span>
+                        <span className="table-label">必填</span>
                       </div>
                       <div className="col-1"></div>
                       <div className="col-3">
@@ -290,10 +311,22 @@ function EditAccount() {
           </form>
           <div className="row button">
             <div className="col-6">
-              <img src={require('../images/cancel.svg')} alt="cancel" />
+              <NavLink
+                to="/Account"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img src={require('../images/cancel.svg')} alt="cancel" />
+              </NavLink>
             </div>
             <div className="col-6">
-              <img src={require('../images/save.svg')} alt="save" />
+              <NavLink
+                to="/Account"
+                className="nav-link"
+                activeClassName="active"
+              >
+                <img src={require('../images/save.svg')} alt="save" />
+              </NavLink>
             </div>
           </div>
         </div>
@@ -304,4 +337,4 @@ function EditAccount() {
   );
 }
 
-export default EditAccount;
+export default withRouter(EditAccount);
