@@ -15,7 +15,7 @@ function SideBar() {
             alt="pinkRibbon"
           />
 
-          <NavLink to="/" className="row sideBarText">
+          <NavLink to="/Account" className="row sideBarText">
             <img
               className="sideBarIcon"
               src={require('../images/account.svg')}
@@ -28,7 +28,7 @@ function SideBar() {
           </NavLink>
 
           <hr className="sidehr" />
-          <NavLink to="/" className="row sideBarText">
+          <NavLink to="/CreditCard" className="row sideBarText">
             <img
               className="sideBarIcon"
               src={require('../images/creditCard.svg')}
@@ -68,7 +68,9 @@ function SideBar() {
 
           <hr className="sidehr" />
           <div>
-            <img src={require('../images/logout.svg')} alt="logout" />
+            <NavLink to="/">
+              <img src={require('../images/logout.svg')} alt="logout" />
+            </NavLink>
           </div>
         </div>
       </div>

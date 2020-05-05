@@ -1,0 +1,14 @@
+.on-top {
+  width: 100%;
+  z-index: 9999;
+}
+
+
+.toggle {
+  display: block;
+  top: 40px;
+  position: absolute;
+  left: 13%;
+  width: auto;
+  z-index: 1;
+}

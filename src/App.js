@@ -4,12 +4,14 @@ import Cart from './pages/Cart';
 import ProductList from './pages/ProductList';
 import Product from './pages/Product';
 import Uielements from './pages/Uielements';
-
 import Member from './pages/Member';
 import EditAccount from './pages/EditAccount';
 import CreditCard from './pages/CreditCard';
 import Account from './pages/Account';
+
+import SideBar from './components/SideBar';
 import Menu from './components/Menu';
+
 function App() {
   return (
     <Router>
@@ -26,13 +28,18 @@ function App() {
             <Product />
           </Route>
           <Route exact path="/">
-            <ProductList />
+            <Member />
+          </Route>
+          <Route>
+            <Account exact path="/account" />
+          </Route>
+          <Route>
+            <EditAccount exact path="/editAccount" />
+          </Route>
+          <Route>
+            <CreditCard exact path="/creditCard" />
           </Route>
         </Switch>
-        <Member />
-        <Account />
-        <EditAccount />
-        <CreditCard />
       </>
     </Router>
   );

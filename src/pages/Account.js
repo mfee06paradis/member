@@ -2,7 +2,7 @@ import React from 'react';
 import SideBar from '../components/SideBar';
 import Top from '../components/Top';
 import Address from '../components/Address';
-
+import { NavLink } from 'react-router-dom';
 function Account() {
   return (
     <>
@@ -16,7 +16,9 @@ function Account() {
           <div className="row">
             <div className="col-1"></div>
             <div className="col-6 lastpage">
-              <img src={require('../images/lastpage.svg')} alt="lastpage" />
+              <NavLink to="/">
+                <img src={require('../images/lastpage.svg')} alt="lastpage" />
+              </NavLink>
             </div>
           </div>
 
@@ -124,12 +126,20 @@ function Account() {
               </table>
             </div>
           </form>
-          <div class="row editButtonMobile">
-            <div class="col-3"></div>
-            <img src={require('../images/editButton.svg')} alt="editButton" />
-            <div class="col-12"></div>
-            <div class="col-3"></div>
-            <img src={require('../images/logout.svg')} alt="logout" />
+          <div class="row">
+            <div className="col-6 editButtonMobile">
+              <NavLink to="/">
+                <img src={require('../images/logout.svg')} alt="logout" />
+              </NavLink>
+            </div>
+            <div className="col-6 editButtonMobile">
+              <NavLink to="/EditAccount">
+                <img
+                  src={require('../images/editButton.svg')}
+                  alt="editButton"
+                />
+              </NavLink>
+            </div>
           </div>
 
           <form action="" className="row content">
@@ -237,9 +247,11 @@ function Account() {
           </form>
         </div>
         <div className="col-3 sideBar">
-          <div className="editButton" style={{ marginTop: '80%' }}>
-            <img src={require('../images/editButton.svg')} alt="editButton" />
-          </div>
+          <NavLink to="/EditAccount">
+            <div className="editButton" style={{ marginTop: '80%' }}>
+              <img src={require('../images/editButton.svg')} alt="editButton" />
+            </div>
+          </NavLink>
         </div>
       </div>
       <Top />

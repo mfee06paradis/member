@@ -2,6 +2,7 @@ import React from 'react';
 import SideBar from '../components/SideBar';
 import Top from '../components/Top';
 import Address from '../components/Address';
+import { NavLink } from 'react-router-dom';
 
 function EditAccount() {
   return (
@@ -16,7 +17,9 @@ function EditAccount() {
           <div className="row">
             <div className="col-1"></div>
             <div className="col-6 lastpage">
-              <img src={require('../images/lastpage.svg')} alt="lastpage" />
+              <NavLink to="/Account">
+                <img src={require('../images/lastpage.svg')} alt="lastpage" />
+              </NavLink>
             </div>
           </div>
 
