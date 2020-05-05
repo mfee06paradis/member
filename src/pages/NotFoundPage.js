@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '../components/Banner';
-import Breadcrumb from '../components/Breadcrumb';
+
 import { withRouter } from 'react-router-dom';
 import { checkPropTypes } from 'prop-types';
 

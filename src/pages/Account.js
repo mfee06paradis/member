@@ -16,7 +16,7 @@ function Account() {
           <div className="row">
             <div className="col-1"></div>
             <div className="col-6 lastpage">
-              <NavLink to="/">
+              <NavLink to="/member">
                 <img src={require('../images/lastpage.svg')} alt="lastpage" />
               </NavLink>
             </div>
@@ -128,7 +128,7 @@ function Account() {
           </form>
           <div class="row">
             <div className="col-6 editButtonMobile">
-              <NavLink to="/">
+              <NavLink to="/member">
                 <img src={require('../images/logout.svg')} alt="logout" />
               </NavLink>
             </div>

@@ -68,7 +68,7 @@ function SideBar() {
 
           <hr className="sidehr" />
           <div>
-            <NavLink to="/">
+            <NavLink to="/member">
               <img src={require('../images/logout.svg')} alt="logout" />
             </NavLink>
           </div>
