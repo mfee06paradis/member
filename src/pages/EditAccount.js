@@ -1,12 +1,145 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SideBar from '../components/SideBar';
-import Top from '../components/Top';
 import Address from '../components/Address';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import '../styles/member.scss';
 
 function EditAccount(props) {
+  let member = JSON.parse(localStorage.getItem('Member')) || [];
+  let nameParseUserMember = member.MemberName;
+  let sliceNameParseUserMember = nameParseUserMember.slice(1);
+  let email = member.MemberEmail;
+  // let password = parseUserMember.MemberPW;
+  let gender = member.MemberSex;
+  let sex;
+  switch (gender) {
+    case 'F':
+      sex = '女';
+      break;
+    default:
+      sex = '男';
+  }
+  let birthday = member.MemberBirthday;
+  let phone = member.MemberPhone;
+  let address = member.MemberAddress;
+
+  async function updateMembertoLocalStorage(value) {
+    let newMemberdata = value;
+    localStorage.setItem('Member', JSON.stringify(newMemberdata));
+  }
+
+  useEffect(() => {
+    console.log('ok');
+  }, [member]);
+
+  // let check = function () {
+  // if (!checkPwd) {
+  //   return false;
+  // }
+  // if (!checkNickName) {
+  //   return false;
+  // }
+  // if (!checkPhone) {
+  //   return false;
+  // }
+  // if (!checkAddress) {
+  //   return false;
+  // }
+  // props.history.push('/account');
+  // };
+  // let checkAddress = function () {
+  //   let Address = document.getElementById('address').value;
+  //   if (Address) {
+  //     document.getElementById('addressMesg').innerHTML = 'OK';
+  //     return true;
+  //   } else {
+  //     document.getElementById('addressMesg').innerHTML = '暱稱不可為空白';
+  //     return false;
+  //   }
+  // };
+  // let checkAddressMobile = function () {
+  //   let Address = document.getElementById('addressMobile').value;
+  //   if (Address) {
+  //     document.getElementById('addressMesgMobile').innerHTML = 'OK';
+  //     return true;
+  //   } else {
+  //     document.getElementById('addressMesgMobile').innerHTML = '暱稱不可為空白';
+  //     return false;
+  //   }
+  // };
+  // let checkNickName = function () {
+  //   let nickName = document.getElementById('nickName').value;
+  //   if (nickName) {
+  //     document.getElementById('nickNameMesg').innerHTML = 'OK';
+  //     return true;
+  //   } else {
+  //     document.getElementById('nickNameMesg').innerHTML = '暱稱不可為空白';
+  //     return false;
+  //   }
+  // };
+  // let checkNickNameMobile = function () {
+  //   let nickName = document.getElementById('nickNameMobile').value;
+  //   if (nickName) {
+  //     document.getElementById('nickNameMesgMobile').innerHTML = 'OK';
+  //     return true;
+  //   } else {
+  //     document.getElementById('nickNameMesgMobile').innerHTML =
+  //       '暱稱不可為空白';
+  //     return false;
+  //   }
+  // };
+  // let checkPwdMobile = function () {
+  //   let passWord = document.getElementById('pwdMobile').value;
+  //   let checkPwd = document.getElementById('checkPwdMobile').value;
+  //   if (passWord === checkPwd) {
+  //     document.getElementById('pwdMesgMobile').innerHTML = 'OK';
+  //     return true;
+  //   } else {
+  //     document.getElementById('pwdMesgMobile').innerHTML = '密碼輸入不一致!!';
+  //     return false;
+  //   }
+  // };
+
+  // let checkPwd = function () {
+  //   let passWord = document.getElementById('pwd').value;
+  //   let checkPwd = document.getElementById('checkPwd').value;
+  //   if (passWord === checkPwd) {
+  //     document.getElementById('pwdMesg').innerHTML = 'OK';
+  //     return true;
+  //   } else {
+  //     document.getElementById('pwdMesg').innerHTML = '密碼輸入不一致!!';
+  //     return false;
+  //   }
+  // };
+  // function checkCellPhone(cellphone) {
+  //   if (cellphone.match(/^09[0-9]{8}$/)) {
+  //     return true;
+  //   }
+  // }
+  // let checkPhoneMobile = function () {
+  //   let cellPhone = document.getElementById('cellPhoneMobile').value;
+  //   let result = checkCellPhone(cellPhone);
+  //   if (result) {
+  //     document.getElementById('phoneMesgMobile').innerHTML = 'OK';
+  //     return true;
+  //   } else {
+  //     document.getElementById('phoneMesgMobile').innerHTML =
+  //       '手機號碼格式錯誤!!';
+  //     return false;
+  //   }
+  // };
+  // let checkPhone = function () {
+  //   let cellPhone = document.getElementById('cellPhone').value;
+  //   let result = checkCellPhone(cellPhone);
+  //   if (result) {
+  //     document.getElementById('phoneMesg').innerHTML = 'OK';
+  //     return true;
+  //   } else {
+  //     document.getElementById('phoneMesg').innerHTML = '手機號碼格式錯誤!!';
+  //     return false;
+  //   }
+  // };
   return (
     <>
       <div className="row bg-white">
@@ -20,6 +153,7 @@ function EditAccount(props) {
             <div className="col-1"></div>
             <div className="col-6 lastpage">
               <img
+                style={{ cursor: 'pointer' }}
                 src={require('../images/lastpage.svg')}
                 alt="lastpage"
                 className="nav-link"
@@ -55,16 +189,8 @@ function EditAccount(props) {
                       <div className="col-10">
                         <td>E-mail帳號:</td>
                         <br />
-                        <label className="accountText">12345678</label>
+                        <label className="accountText">{email}</label>
                       </div>
-                    </div>
-                  </tr>
-
-                  <tr className="bBorder">
-                    <div className="row accountRow2">
-                      <div className="col-1"></div>
-                      <div className="col-9">密碼:</div>
-                      <br />
                     </div>
                   </tr>
 
@@ -72,12 +198,27 @@ function EditAccount(props) {
                     <div className="row accountRow">
                       <div className="col-1"></div>
                       <div className="col-11">
-                        暱稱&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
+                        <td>密碼:</td>
+                        <br />
+                        <label className="accountText2">********</label>
                       </div>
+                    </div>
+                  </tr>
+
+                  <tr className="bBorder">
+                    <div className="row accountRow">
+                      <div className="col-1"></div>
+                      <div className="col-11">暱稱</div>
                       <div className="col-1"></div>
                       <div className="col-8 ">
-                        <input className="nickName" type="text" />
+                        <input
+                          className="nickName"
+                          type="text"
+                          id="nickNameMobile"
+                          // onBlur={checkNickNameMobile}
+                          placeholder={sliceNameParseUserMember}
+                        />
+                        <span id="nickNameMesgMobile"></span>
                       </div>
                     </div>
                   </tr>
@@ -88,9 +229,42 @@ function EditAccount(props) {
                       <div className="col-11">性別</div>
                       <div className="col-1"></div>
                       <div className="col">
-                        <select style={{ color: '#656765' }}>
+                        <select
+                          style={{ color: '#656765' }}
+                          onChange={(event) => {
+                            if (event.target.value === '女') {
+                              updateMembertoLocalStorage({
+                                MemberID: '003',
+                                MemberName: '杜子晴',
+                                MemberPW: '1234abcd',
+                                MemberSex: 'F',
+                                MemberBirthday: '1991-03-24',
+                                MemberPhone: '0994060776',
+                                MemberEmail: 'Olivia54685@hotmail.com',
+                                MemberAddress: '連江縣天津路305號',
+                                MemberLevel: 'Member',
+                                MemberCreatedAt: '2020-01-11',
+                                MemberAvatar: '../images/avatar1.jpg',
+                              });
+                            } else {
+                              updateMembertoLocalStorage({
+                                MemberID: '003',
+                                MemberName: '杜子晴',
+                                MemberPW: '1234abcd',
+                                MemberSex: 'M',
+                                MemberBirthday: '1991-03-24',
+                                MemberPhone: '0994060776',
+                                MemberEmail: 'Olivia54685@hotmail.com',
+                                MemberAddress: '連江縣天津路305號',
+                                MemberLevel: 'Member',
+                                MemberCreatedAt: '2020-01-11',
+                                MemberAvatar: '../images/avatar1.jpg',
+                              });
+                            }
+                          }}
+                        >
                           <option selected disabled>
-                            請選擇
+                            {sex}
                           </option>
                           <option>男</option>
                           <option>女</option>
@@ -106,10 +280,9 @@ function EditAccount(props) {
                       <div className="col">
                         <input
                           style={{ color: '#656765' }}
-                          placeholder=""
                           type="date"
-                          name="dateofbirth"
                           id="dateofbirth"
+                          value={birthday}
                         />
                       </div>
                     </div>
@@ -118,13 +291,17 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        手機&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
-                      </div>
+                      <div className="col-11">手機</div>
                       <div className="col-1"></div>
-                      <div className="col-8">
-                        <input type="text" className="cellphone" />
+                      <div className="col-6">
+                        <input
+                          type="text"
+                          className="cellphone"
+                          id="cellPhoneMobile"
+                          placeholder={phone}
+                          // onBlur={checkPhoneMobile}
+                        />
+                        <span id="phoneMesgMobile"></span>
                       </div>
                     </div>
                   </tr>
@@ -132,10 +309,7 @@ function EditAccount(props) {
                   <tr className="address">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        地址&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
-                      </div>
+                      <div className="col-11">地址</div>
                       <div className="col-1"></div>
                       <div className="col-3">
                         <p>縣市</p>
@@ -148,9 +322,15 @@ function EditAccount(props) {
                       <div className="col-12"></div>
                       <div className="col-1"></div>
                       <input
+                        id="addressMobile"
                         type="text"
                         style={{ height: '6em', width: '80%' }}
+                        placeholder={address}
+                        // onBlur={checkAddressMobile}
                       />
+                      <div className="col-12"></div>
+                      <div className="col-1"></div>
+                      <div id="addressMesgMobile"></div>
                     </div>
                   </tr>
                   <tr className="lastRow"></tr>
@@ -175,13 +355,17 @@ function EditAccount(props) {
                 className="nav-link"
                 activeClassName="active"
               >
-                <img src={require('../images/save2.svg')} alt="save2" />
+                <img
+                  src={require('../images/save2.svg')}
+                  alt="save2"
+                  // onClick={check}
+                />
               </NavLink>
             </div>
           </div>
-          {/* -----------------------Mobile-------------------------- */}
+          {/* -----------------------EndMobile-------------------------- */}
 
-          <form action="" className="row content">
+          <form action="/account" className="row content">
             <div className="col-lg-12 container table-bg">
               <table className="editTable">
                 <tbody>
@@ -204,10 +388,10 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-10">
+                      <div className="col-11">
                         <td>E-mail帳號:</td>
                         <br />
-                        <label className="accountText">12345678</label>
+                        <label className="accountText">{email}</label>
                       </div>
                     </div>
                   </tr>
@@ -215,21 +399,28 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-9">密碼:</div>
-                      <br />
+                      <div className="col-11">
+                        <td>密碼:</td>
+                        <br />
+                        <label className="accountText2">********</label>
+                      </div>
                     </div>
                   </tr>
 
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        暱稱&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
-                      </div>
+                      <div className="col-11">暱稱</div>
                       <div className="col-1"></div>
                       <div className="col-8 ">
-                        <input className="nickName" type="text" />
+                        <input
+                          className="nickName"
+                          type="text"
+                          id="nickName"
+                          // onBlur={checkNickName}
+                          placeholder={sliceNameParseUserMember}
+                        />
+                        <span id="nickNameMesg"></span>
                       </div>
                     </div>
                   </tr>
@@ -242,7 +433,7 @@ function EditAccount(props) {
                       <div className="col-6">
                         <select style={{ color: '#656765' }}>
                           <option selected disabled>
-                            請選擇
+                            {sex}
                           </option>
                           <option>男</option>
                           <option>女</option>
@@ -258,7 +449,7 @@ function EditAccount(props) {
                       <div className="col">
                         <input
                           style={{ color: '#656765' }}
-                          placeholder=""
+                          value={birthday}
                           type="date"
                           name="dateofbirth"
                           id="dateofbirth"
@@ -270,13 +461,17 @@ function EditAccount(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        手機&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
-                      </div>
+                      <div className="col-11">手機</div>
                       <div className="col-1"></div>
                       <div className="col-8">
-                        <input type="text" className="cellphone" />
+                        <input
+                          type="text"
+                          className="cellPhone"
+                          id="cellPhone"
+                          // onBlur={checkPhone}
+                          placeholder={phone}
+                        />
+                        <span id="phoneMesg"></span>
                       </div>
                     </div>
                   </tr>
@@ -284,23 +479,35 @@ function EditAccount(props) {
                   <tr className="address">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">
-                        地址&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
-                      </div>
+                      <div className="col-11">地址</div>
                       <div className="col-1"></div>
-                      <div className="col-3">
-                        <p>縣市</p>
-                        <p>區/鄉/鎮</p>
-                        <p>郵遞區號</p>
-                      </div>
-                      <div className="col-4">
-                        <Address />
+                      <div className="col">
+                        <div className="col-4">縣市</div>
+                        <div className="col-12">
+                          <select>
+                            <option>1</option>
+                            <option>2</option>
+                          </select>
+                        </div>
+                        <div className="col-4">區/鄉/鎮</div>
+                        <div className="col-12">
+                          <select>
+                            <option>1</option>
+                            <option>2</option>
+                          </select>
+                        </div>
                       </div>
                       <div className="col-12"></div>
                       <div className="col-1"></div>
                       <div className="col-10">
-                        <input type="text" style={{ height: '6em' }} />
+                        <input
+                          type="text"
+                          style={{ height: '6em' }}
+                          id="address"
+                          // onBlur={checkAddress}
+                          placeholder={address}
+                        />
+                        <span id="addressMesg"></span>
                       </div>
                     </div>
                   </tr>
@@ -310,29 +517,37 @@ function EditAccount(props) {
             </div>
           </form>
           <div className="row button">
-            <div className="col-6">
+            <div className="col-8">
               <NavLink
                 to="/Account"
                 className="nav-link"
                 activeClassName="active"
               >
-                <img src={require('../images/cancel.svg')} alt="cancel" />
+                <button className="btn-green">取消</button>
+                {/* <img src={require('../images/cancel.svg')} alt="cancel" /> */}
               </NavLink>
             </div>
-            <div className="col-6">
-              <NavLink
-                to="/Account"
+            <div className="col">
+              {/* <img
                 className="nav-link"
                 activeClassName="active"
+                src={require('../images/save.svg')}
+                alt="save"
+                onClick={check}
+                style={{ cursor: 'pointer' }}
+              /> */}
+              <button
+                style={{ marginTop: '20px' }}
+                className="btn-main"
+                type="submit"
               >
-                <img src={require('../images/save.svg')} alt="save" />
-              </NavLink>
+                保存
+              </button>
             </div>
           </div>
         </div>
         <div className="col-3 sideBar"></div>
       </div>
-      <Top />
     </>
   );
 }

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SideBar from '../components/SideBar';
-import Top from '../components/Top';
 import { NavLink } from 'react-router-dom';
 import '../styles/member.scss';
+import { withRouter } from 'react-router-dom';
 
-function Member() {
+function Member(props) {
+  const member = localStorage.getItem('Member') || [];
+  const parseUserMember = JSON.parse(member);
+  const nameParseUserMember = parseUserMember.MemberName;
+  const sliceNameParseUserMember = nameParseUserMember.slice(1);
+
   return (
     <>
       <div className="row bg-white">
@@ -24,8 +29,8 @@ function Member() {
           <div className="col-12">
             <img src={require('../images/member-icon.svg')} alt="membericon" />
           </div>
-          <div className="col-12">
-            <img src={require('../images/pink-ribbon.svg')} alt="pinkribbon" />
+          <div className="col-12" style={{ height: '6em' }}>
+            <div className="pinkRibbon">歡迎! {sliceNameParseUserMember}</div>
           </div>
           <NavLink to="/Account" className="nav-link" activeClassName="active">
             <div className="col-12">
@@ -97,6 +102,12 @@ function Member() {
                 src={require('../images/logout.svg')}
                 alt="logout"
                 className="mobileIcon"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  alert('已成功登出');
+                  localStorage.clear();
+                  props.history.push('/home');
+                }}
               />
             </div>
           </div>
@@ -104,9 +115,8 @@ function Member() {
         </div>
         <div className="col-3 sideBar"></div>
       </div>
-      <Top />
     </>
   );
 }
 
-export default Member;
+export default withRouter(Member);

@@ -1,19 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import '../styles/member.scss';
 
-function SideBar() {
+function SideBar(props) {
+  const [userData, setUserData] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/members')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        // console.log(myJson);
+        setUserData(myJson);
+      });
+  }, []);
+
+  const member = localStorage.getItem('Member') || [];
+  const parseUserMember = JSON.parse(member);
+  const nameParseUserMember = parseUserMember.MemberName;
+  const sliceNameParseUserMember = nameParseUserMember.slice(1);
+  // const avatarParseUserMember = parseUserMember.MemberAvatar;
+
   return (
     <>
       <div className="col-3 sideBar ">
         <div className="col-8 sideBarContent">
-          <img
-            src={require('../images/member-icon-for-sidebar.svg')}
-            alt="memberIconForSideBar"
-          />
-          <img
+          <div>
+            <img
+              src={require('../images/avatar1.jpg')}
+              style={{ width: '70%', marginLeft: '2em', borderRadius: '50%' }}
+              alt="memberIconForSideBar"
+            />
+          </div>
+          <div className="pinkRibbonSideBar">
+            歡迎! {sliceNameParseUserMember}
+          </div>
+          {/* <img
             src={require('../images/pink-ribbon-for-sidebar.svg')}
             alt="pinkRibbon"
-          />
+          /> */}
 
           <NavLink
             to="/Account"
@@ -84,14 +110,22 @@ function SideBar() {
 
           <hr className="sidehr" />
           <div>
-            <NavLink to="/member" className="nav-link" activeClassName="active">
-              <img src={require('../images/logout.svg')} alt="logout" />
-            </NavLink>
+            <img
+              style={{ cursor: 'pointer' }}
+              className="nav-link"
+              activeClassName="active"
+              src={require('../images/logout.svg')}
+              alt="logout"
+              onClick={() => {
+                alert('已成功登出');
+                localStorage.clear();
+                props.history.push('/home');
+              }}
+            />
           </div>
         </div>
       </div>
     </>
   );
 }
-
-export default SideBar;
+export default withRouter(SideBar);

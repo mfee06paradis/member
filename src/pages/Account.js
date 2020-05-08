@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SideBar from '../components/SideBar';
-import Top from '../components/Top';
 import Address from '../components/Address';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import '../styles/member.scss';
 
 function Account(props) {
+  const member = localStorage.getItem('Member') || [];
+  const parseUserMember = JSON.parse(member);
+  const nameParseUserMember = parseUserMember.MemberName;
+  const sliceNameParseUserMember = nameParseUserMember.slice(1);
+  const email = parseUserMember.MemberEmail;
+  // const password = parseUserMember.MemberPW;
+  const gender = parseUserMember.MemberSex;
+  let sex;
+  switch (gender) {
+    case 'F':
+      sex = '女';
+      break;
+    default:
+      sex = '男';
+  }
+
+  const birthday = parseUserMember.MemberBirthday;
+  const phone = parseUserMember.MemberPhone;
+  const address = parseUserMember.MemberAddress;
+
   return (
     <>
       <div className="row bg-white">
@@ -20,6 +39,7 @@ function Account(props) {
             <div className="col-1"></div>
             <div className="col-6 lastpage">
               <img
+                style={{ cursor: 'pointer' }}
                 src={require('../images/lastpage.svg')}
                 alt="lastpage"
                 className="nav-link"
@@ -53,7 +73,7 @@ function Account(props) {
                       <div className="col-10">
                         <td>E-mail帳號:</td>
                         <br />
-                        <label className="accountText">12345678</label>
+                        <label className="accountText">{email}</label>
                       </div>
                     </div>
                   </tr>
@@ -61,8 +81,11 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-9">密碼:</div>
-                      <br />
+                      <div className="col-11">
+                        <td>密碼:</td>
+                        <br />
+                        <label className="accountText2">********</label>
+                      </div>
                     </div>
                   </tr>
 
@@ -70,8 +93,11 @@ function Account(props) {
                     <div className="row accountRow">
                       <div className="col-1"></div>
                       <div className="col-11">
-                        暱稱&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
+                        <td>暱稱:</td>
+                        <br />
+                        <label className="accountText">
+                          {sliceNameParseUserMember}
+                        </label>
                       </div>
                       <div className="col-1"></div>
                       <div className="col-8 "></div>
@@ -81,14 +107,24 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">性別</div>
+                      <div className="col-11">
+                        <td>性別:</td>
+                        <br />
+                        <label className="accountText2">{sex}</label>
+                      </div>
+
                       <div className="col-1"></div>
                     </div>
                   </tr>
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">生日</div>
+                      <div className="col-11">
+                        <td>生日:</td>
+                        <br />
+                        <label className="accountText">{birthday}</label>
+                      </div>
+
                       <div className="col-1"></div>
                     </div>
                   </tr>
@@ -97,9 +133,11 @@ function Account(props) {
                     <div className="row accountRow2">
                       <div className="col-1"></div>
                       <div className="col-11">
-                        手機&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
+                        <td>手機:</td>
+                        <br />
+                        <label className="accountText2">{phone}</label>
                       </div>
+
                       <div className="col-1"></div>
                       <div className="col-8"></div>
                     </div>
@@ -109,9 +147,11 @@ function Account(props) {
                     <div className="row accountRow">
                       <div className="col-1"></div>
                       <div className="col-11">
-                        地址&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
+                        <td>地址:</td>
+                        <br />
+                        <label className="accountText">{address}</label>
                       </div>
+
                       <div className="col-1"></div>
                       <div className="col-3" style={{ visibility: 'hidden' }}>
                         <p>縣市</p>
@@ -138,13 +178,18 @@ function Account(props) {
           </form>
           <div class="row">
             <div className="col-6 editButtonMobile">
-              <NavLink
-                to="/member"
+              <img
                 className="nav-link"
                 activeClassName="active"
-              >
-                <img src={require('../images/logout.svg')} alt="logout" />
-              </NavLink>
+                src={require('../images/logout.svg')}
+                alt="logout"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  alert('已成功登出');
+                  localStorage.clear();
+                  props.history.push('/home');
+                }}
+              />
             </div>
             <div className="col-6 editButtonMobile">
               <NavLink
@@ -186,7 +231,7 @@ function Account(props) {
                       <div className="col-10">
                         <td>E-mail帳號:</td>
                         <br />
-                        <label className="accountText">12345678</label>
+                        <label className="accountText">{email}</label>
                       </div>
                     </div>
                   </tr>
@@ -194,7 +239,11 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-9">密碼:</div>
+                      <div className="col-11">
+                        <td>密碼:</td>
+                        <br />
+                        <label className="accountText2">********</label>
+                      </div>
                       <br />
                     </div>
                   </tr>
@@ -203,9 +252,13 @@ function Account(props) {
                     <div className="row accountRow">
                       <div className="col-1"></div>
                       <div className="col-11">
-                        暱稱&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
+                        <td>暱稱:</td>
+                        <br />
+                        <label className="accountText">
+                          {sliceNameParseUserMember}
+                        </label>
                       </div>
+
                       <div className="col-1"></div>
                       <div className="col-8 "></div>
                     </div>
@@ -214,14 +267,23 @@ function Account(props) {
                   <tr className="bBorder">
                     <div className="row accountRow2">
                       <div className="col-1"></div>
-                      <div className="col-11">性別</div>
+                      <div className="col-11">
+                        <td>性別:</td>
+                        <br />
+                        <label className="accountText2">{sex}</label>
+                      </div>
+
                       <div className="col-1"></div>
                     </div>
                   </tr>
                   <tr className="bBorder">
                     <div className="row accountRow">
                       <div className="col-1"></div>
-                      <div className="col-11">生日</div>
+                      <div className="col-11">
+                        <td>生日:</td>
+                        <br />
+                        <label className="accountText">{birthday}</label>
+                      </div>
                       <div className="col-1"></div>
                     </div>
                   </tr>
@@ -230,22 +292,24 @@ function Account(props) {
                     <div className="row accountRow2">
                       <div className="col-1"></div>
                       <div className="col-11">
-                        手機&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
+                        <td>手機:</td>
+                        <br />
+                        <label className="accountText2">{phone}</label>
                       </div>
+
                       <div className="col-1"></div>
                       <div className="col-8"></div>
                     </div>
                   </tr>
 
-                  <tr className="address">
+                  <tr>
                     <div className="row accountRow">
                       <div className="col-1"></div>
                       <div className="col-11">
-                        地址&nbsp;&nbsp;
-                        <span className="table-label">必填</span>
+                        <td>地址:</td>
+                        <br />
+                        <label className="accountText">{address}</label>
                       </div>
-
                       <div className="col-3" style={{ visibility: 'hidden' }}>
                         <p>縣市</p>
                       </div>
@@ -255,7 +319,7 @@ function Account(props) {
                       <div className="col-12"></div>
                       <div className="col-1"></div>
                       <div className="col-10" style={{ visibility: 'hidden' }}>
-                        <input type="text" style={{ height: '6em' }} />
+                        <input type="text" />
                       </div>
                     </div>
                   </tr>
@@ -277,7 +341,6 @@ function Account(props) {
           </NavLink>
         </div>
       </div>
-      <Top />
     </>
   );
 }

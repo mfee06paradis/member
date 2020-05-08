@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 function Cart() {
   const loading = (
@@ -9,7 +9,7 @@ function Cart() {
         </div>
       </div>
     </>
-  )
+  );
 
   const display = (
     <>
@@ -18,13 +18,13 @@ function Cart() {
       </ul>
       <h3>總價：</h3>
     </>
-  )
+  );
 
   return (
     <>
       <div className="container">{display}</div>
     </>
-  )
+  );
 }
 
-export default Cart
+export default Cart;
