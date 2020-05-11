@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+// import { Modal } from 'react-bootstrap';
 import '../styles/member.scss';
 
 function SideBar(props) {
-  const [userData, setUserData] = useState([]);
-  useEffect(() => {
-    fetch('http://localhost:5000/members')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        // console.log(myJson);
-        setUserData(myJson);
-      });
-  }, []);
+  // const [userData, setUserData] = useState([]);
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/members')
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(function (myJson) {
+  //       // console.log(myJson);
+  //       setUserData(myJson);
+  //     });
+  // }, []);
 
   const member = localStorage.getItem('Member') || [];
   const parseUserMember = JSON.parse(member);
@@ -29,7 +30,12 @@ function SideBar(props) {
           <div>
             <img
               src={require('../images/avatar1.jpg')}
-              style={{ width: '70%', marginLeft: '2em', borderRadius: '50%' }}
+              style={{
+                width: '70%',
+                marginLeft: '2em',
+                borderRadius: '50%',
+                paddingBottom: '10px',
+              }}
               alt="memberIconForSideBar"
             />
           </div>
@@ -119,7 +125,9 @@ function SideBar(props) {
               onClick={() => {
                 alert('已成功登出');
                 localStorage.clear();
+                // setTimeout(() => {
                 props.history.push('/home');
+                // }, 2000);
               }}
             />
           </div>

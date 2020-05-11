@@ -1,5 +1,5 @@
 import React from 'react';
-import Banner from '../components/Banner';
+import Banner from '../../back_up/components/Banner';
 
 import { withRouter } from 'react-router-dom';
 import { checkPropTypes } from 'prop-types';

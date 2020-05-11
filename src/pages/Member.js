@@ -3,7 +3,7 @@ import SideBar from '../components/SideBar';
 import { NavLink } from 'react-router-dom';
 import '../styles/member.scss';
 import { withRouter } from 'react-router-dom';
-
+import Footer from '../components/Footer';
 function Member(props) {
   const member = localStorage.getItem('Member') || [];
   const parseUserMember = JSON.parse(member);
@@ -26,8 +26,20 @@ function Member(props) {
               alt="registerBox2"
             />
           </NavLink>
-          <div className="col-12">
-            <img src={require('../images/member-icon.svg')} alt="membericon" />
+          <div className="row">
+            <div className="col-3"></div>
+            <div className="col-6">
+              <img
+                src={require('../images/avatar1.jpg')}
+                alt="membericon"
+                style={{
+                  width: '70%',
+                  marginLeft: '2em',
+                  borderRadius: '50%',
+                  paddingBottom: '10px',
+                }}
+              />
+            </div>
           </div>
           <div className="col-12" style={{ height: '6em' }}>
             <div className="pinkRibbon">歡迎! {sliceNameParseUserMember}</div>
@@ -111,10 +123,11 @@ function Member(props) {
               />
             </div>
           </div>
-          {/* -------------------Mobile-------------------- */}
+          {/* -------------------EndMobile-------------------- */}
         </div>
         <div className="col-3 sideBar"></div>
       </div>
+      <Footer />
     </>
   );
 }
