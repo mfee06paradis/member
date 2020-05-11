@@ -5,20 +5,20 @@ import Uielements from './pages/Uielements';
 import Home from './pages/Home';
 import Brands from './pages/Brands';
 import Product from './pages/Product';
-import Discount from './pages/Discount';
-import Discounts from './pages/Discounts';
-import DiscountList from './components/DiscountList';
-import Makeup from './pages/Makeup';
-import Lesson from './pages/Lesson';
-import AdaptiveTest from './pages/AdaptiveTest';
-import Cart from './pages/Cart';
-import Ani from './pages/Ani';
+// import Discount from './pages/Discount';
+// import Discounts from './pages/Discounts';
+// import DiscountList from './components/DiscountList';
+// import Makeup from './pages/Makeup';
+// import Lesson from './pages/Lesson';
+// import AdaptiveTest from './pages/AdaptiveTest';
+// import Cart from './pages/Cart';
+// import Ani from './pages/Ani';
 import Member from './pages/Member';
 import MemberAdd from './pages/MemberAdd';
 import CreditCard from './pages/CreditCard';
 import Account from './pages/Account';
 import EditAccount from './pages/EditAccount';
-import NotFoundPage from './pages/NotFoundPage';
+// import NotFoundPage from './pages/NotFoundPage';
 
 import Menu from './components/Menu';
 import Footer from './components/Footer';
@@ -30,9 +30,9 @@ function App() {
       <>
         <Menu isAuth={isAuth} setIsAuth={setIsAuth} />
         <Switch>
-          <Route exact path="/">
+          {/* <Route exact path="/">
             <Ani />
-          </Route>
+          </Route> */}
           <Route path="/Uielements">
             <Uielements />
           </Route>
@@ -42,7 +42,7 @@ function App() {
           <Route path="/Home">
             <Home />
           </Route>
-          <Route path="/product/:type?/:id?">
+          {/* <Route path="/product/:type?/:id?">
             <Product />
           </Route>
           <Route path="/Discount">
@@ -68,7 +68,7 @@ function App() {
           </Route>
           <Route path="/cart">
             <Cart />
-          </Route>
+          </Route> */}
           <Route path="/Member">
             <Member isAuth={isAuth} />
           </Route>
@@ -84,12 +84,12 @@ function App() {
           <Route path="/EditAccount">
             <EditAccount />
           </Route>
-          <Route exact path="/">
+          {/* <Route exact path="/">
             <Ani />
-          </Route>
-          <Route path="*">
+          </Route> */}
+          {/* <Route path="*">
             <NotFoundPage />
-          </Route>
+          </Route> */}
         </Switch>
         <Footer />
       </>
