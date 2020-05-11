@@ -308,6 +308,7 @@
 }
 
 @media screen and (max-width: 1000px) {
+
     .brandText,
     .addressPC,
     .creditCardButton,
@@ -315,6 +316,7 @@
     .creditCardBlank2 {
         display: none;
     }
+
     .brandBlank,
     .addressMobile,
     .creditCardBlank {
@@ -388,4 +390,10 @@ input {
     width: 6rem;
     bottom: 10px;
     right: 3rem;
+}
+
+td {
+    @include phone-width {
+        display: flex !important;
+    }
 }

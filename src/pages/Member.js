@@ -60,7 +60,7 @@ function Member(props) {
                 alt="membericon"
                 style={{
                   width: '70%',
-                  marginLeft: '3em',
+                  marginLeft: '2em',
                   borderRadius: '50%',
                   paddingBottom: '10px',
                 }}
