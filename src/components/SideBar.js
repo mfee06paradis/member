@@ -1,28 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-// import { Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import '../styles/member.scss';
 
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+          <div className="sub-title">
+            <h1 className="sub-title-eng">已成功登出!</h1>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <br></br>
+          <button className="btn-main" onClick={props.onHide}>
+            確定
+          </button>
+          <br></br>
+        </Modal.Body>
+      </div>
+    </Modal>
+  );
+}
 function SideBar(props) {
-  // const [userData, setUserData] = useState([]);
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/members')
-  //     .then(function (response) {
-  //       return response.json();
-  //     })
-  //     .then(function (myJson) {
-  //       // console.log(myJson);
-  //       setUserData(myJson);
-  //     });
-  // }, []);
-
-  const member = localStorage.getItem('Member') || [];
-  const parseUserMember = JSON.parse(member);
-  const nameParseUserMember = parseUserMember.MemberName;
-  const sliceNameParseUserMember = nameParseUserMember.slice(1);
-  // const avatarParseUserMember = parseUserMember.MemberAvatar;
-
+  const [name, setName] = useState('');
+  const [modalShow, setModalShow] = useState(false);
+  useEffect(() => {
+    const member = JSON.parse(localStorage.getItem('Member')) || [];
+    setName(member.MemberName);
+  }, []);
   return (
     <>
       <div className="col-3 sideBar ">
@@ -39,9 +53,7 @@ function SideBar(props) {
               alt="memberIconForSideBar"
             />
           </div>
-          <div className="pinkRibbonSideBar">
-            歡迎! {sliceNameParseUserMember}
-          </div>
+          <div className="pinkRibbonSideBar">歡迎! {name.slice(1)}</div>
           {/* <img
             src={require('../images/pink-ribbon-for-sidebar.svg')}
             alt="pinkRibbon"
@@ -123,12 +135,17 @@ function SideBar(props) {
               src={require('../images/logout.svg')}
               alt="logout"
               onClick={() => {
-                alert('已成功登出');
-                localStorage.clear();
-                // setTimeout(() => {
-                props.history.push('/home');
-                // }, 2000);
+                setModalShow(true);
+                setTimeout(() => {
+                  props.history.push('/home');
+                  localStorage.clear();
+                  window.location.reload();
+                }, 2000);
               }}
+            />
+            <MyVerticallyCenteredModal
+              show={modalShow}
+              onHide={() => setModalShow(false)}
             />
           </div>
         </div>

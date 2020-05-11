@@ -1,10 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import SideBar from '../components/SideBar';
-import Footer from '../components/Footer';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 import '../styles/member.scss';
-
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+          <div className="sub-title">
+            <h1 className="sub-title-eng">已成功登出!</h1>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <br></br>
+          <button className="btn-main" onClick={props.onHide}>
+            確定
+          </button>
+          <br></br>
+        </Modal.Body>
+      </div>
+    </Modal>
+  );
+}
 function Account(props) {
   const member = localStorage.getItem('Member') || [];
   const parseUserMember = JSON.parse(member);
@@ -12,6 +37,7 @@ function Account(props) {
   const email = parseUserMember.MemberEmail;
   // const password = parseUserMember.MemberPW;
   const gender = parseUserMember.MemberSex;
+  const [modalShow, setModalShow] = useState(false);
   let sex;
   switch (gender) {
     case 'F':
@@ -168,10 +194,17 @@ function Account(props) {
                 alt="logout"
                 style={{ cursor: 'pointer' }}
                 onClick={() => {
-                  alert('已成功登出');
-                  localStorage.clear();
-                  props.history.push('/home');
+                  setModalShow(true);
+                  setTimeout(() => {
+                    props.history.push('/home');
+                    localStorage.clear();
+                    window.location.reload();
+                  }, 2000);
                 }}
+              />
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
               />
             </div>
             <div className="col-6 editButtonMobile">
@@ -316,7 +349,6 @@ function Account(props) {
           </NavLink>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

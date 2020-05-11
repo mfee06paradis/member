@@ -3,13 +3,39 @@ import SideBar from '../components/SideBar';
 import { NavLink } from 'react-router-dom';
 import '../styles/member.scss';
 import { withRouter } from 'react-router-dom';
-import Footer from '../components/Footer';
+import { Modal } from 'react-bootstrap';
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <div className="modal-context" style={{ backgroundColor: '#FEDFE1' }}>
+        <Modal.Header>
+          <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+          <div className="sub-title">
+            <h1 className="sub-title-eng">已成功登出!</h1>
+          </div>
+        </Modal.Header>
+        <Modal.Body>
+          <br></br>
+          <button className="btn-main" onClick={props.onHide}>
+            確定
+          </button>
+          <br></br>
+        </Modal.Body>
+      </div>
+    </Modal>
+  );
+}
 function Member(props) {
   const member = localStorage.getItem('Member') || [];
   const parseUserMember = JSON.parse(member);
   const nameParseUserMember = parseUserMember.MemberName;
   const sliceNameParseUserMember = nameParseUserMember.slice(1);
-
+  const [modalShow, setModalShow] = useState(false);
   return (
     <>
       <div className="row bg-white">
@@ -116,10 +142,17 @@ function Member(props) {
                 className="mobileIcon"
                 style={{ cursor: 'pointer' }}
                 onClick={() => {
-                  alert('已成功登出');
-                  localStorage.clear();
-                  props.history.push('/home');
+                  setModalShow(true);
+                  setTimeout(() => {
+                    props.history.push('/home');
+                    localStorage.clear();
+                    window.location.reload();
+                  }, 2000);
                 }}
+              />
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
               />
             </div>
           </div>
@@ -127,7 +160,6 @@ function Member(props) {
         </div>
         <div className="col-3 sideBar"></div>
       </div>
-      <Footer />
     </>
   );
 }

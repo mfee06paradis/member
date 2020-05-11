@@ -15,6 +15,7 @@ import CreditCard from './pages/CreditCard';
 import Account from './pages/Account';
 import SideBar from './components/SideBar';
 import Menu from './components/Menu';
+import Footer from './components/Footer';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -60,6 +61,7 @@ function App() {
             <Account />
           </Route>
         </Switch>
+        <Footer />
       </>
     </Router>
   );

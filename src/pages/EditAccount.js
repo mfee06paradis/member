@@ -709,7 +709,6 @@ function EditAccount(props) {
         </div>
         <div className="col-3 sideBar"></div>
       </div>
-      <Footer />
     </>
   );
 }

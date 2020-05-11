@@ -3,7 +3,6 @@ import SideBar from '../components/SideBar';
 import AnimatedVisibility from '../components/AnimatedVisibility';
 import '../styles/member.scss';
 import { withRouter } from 'react-router-dom';
-import Footer from '../components/Footer';
 import { Modal } from 'react-bootstrap';
 function MyVerticallyCenteredModal(props) {
   return (
@@ -549,7 +548,6 @@ function CreditCard(props) {
         </div>
         <div className="col-3 sideBar"></div>
       </div>
-      <Footer />
     </>
   );
 }
