@@ -246,8 +246,8 @@ function CreditCard(props) {
   useEffect(() => {
     getCardFromServer();
     const member = JSON.parse(localStorage.getItem('Member')) || [];
-    console.log(member.MemberID);
-    setMemberID(member.MemberID);
+    console.log(member.memberId);
+    setMemberID(member.memberId);
     showUserCard();
   }, []);
 
@@ -294,7 +294,7 @@ function CreditCard(props) {
                 onClick={() => {
                   const member =
                     JSON.parse(localStorage.getItem('Member')) || [];
-                  const name = member.MemberName;
+                  const name = member.memberName;
                   document.getElementById('cardNumber').value =
                     '4321766289100023';
                   setCreditCardNumber('4321766289100023');
@@ -341,7 +341,7 @@ function CreditCard(props) {
               className="btn-main"
               onClick={() => {
                 const member = JSON.parse(localStorage.getItem('Member')) || [];
-                const name = member.MemberName;
+                const name = member.memberName;
                 document.getElementById('cardNumber').value =
                   '4321766289100023';
                 setCreditCardNumber('4321766289100023');

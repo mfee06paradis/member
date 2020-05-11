@@ -33,10 +33,9 @@ function MyVerticallyCenteredModal(props) {
 function Account(props) {
   const member = localStorage.getItem('Member') || [];
   const parseUserMember = JSON.parse(member);
-  const nameParseUserMember = parseUserMember.MemberName;
-  const email = parseUserMember.MemberEmail;
-  // const password = parseUserMember.MemberPW;
-  const gender = parseUserMember.MemberSex;
+  const nameParseUserMember = parseUserMember.memberName;
+  const email = parseUserMember.memberEmail;
+  const gender = parseUserMember.membersex;
   const [modalShow, setModalShow] = useState(false);
   let sex;
   switch (gender) {
@@ -47,9 +46,9 @@ function Account(props) {
       sex = '男';
   }
 
-  const birthday = parseUserMember.MemberBirthday;
-  const phone = parseUserMember.MemberPhone;
-  const address = parseUserMember.MemberAddress;
+  const birthday = parseUserMember.memberBirthday;
+  const phone = parseUserMember.memberPhone;
+  const address = parseUserMember.memberAddress;
 
   return (
     <>

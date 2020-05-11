@@ -15,12 +15,10 @@ import '../styles/navbar.scss';
 
 function Menu(props) {
   const [show, setShow] = useState(false);
-
   const [userData, setUserData] = useState([]);
   const [userEmail, setUserEmail] = useState([]);
   const [userPassword, setUserPassword] = useState([]);
   const [userRemember, setUserRemember] = useState(false);
-
   const [loginMessage, setLoginMessage] = useState('');
 
   const handleClose = () => {
@@ -54,7 +52,7 @@ function Menu(props) {
   const isAuthTrueMenu = () => {
     const userNameLogin = localStorage.getItem('Member') || [];
     const parseuserNameLogin = JSON.parse(userNameLogin);
-    const nameParseuserNameLogin = parseuserNameLogin.MemberName;
+    const nameParseuserNameLogin = parseuserNameLogin.memberName;
     const sliceNameParseuserNameLogin = nameParseuserNameLogin.slice(1);
     return (
       <>
@@ -328,8 +326,8 @@ function Menu(props) {
                 onClick={(e) => {
                   const getUser = userData.find((value) => {
                     if (
-                      userEmail === value.MemberEmail &&
-                      userPassword === value.MemberPW
+                      userEmail === value.memberEmail &&
+                      userPassword === value.memberPw
                     ) {
                       return true;
                     } else {
@@ -340,8 +338,8 @@ function Menu(props) {
                   localStorage.setItem('Member', JSON.stringify(getUser));
                   const isMember = userData.some((value) => {
                     if (
-                      userEmail === value.MemberEmail &&
-                      userPassword === value.MemberPW
+                      userEmail === value.memberEmail &&
+                      userPassword === value.memberPw
                     ) {
                       return true;
                     } else {

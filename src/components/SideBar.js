@@ -33,9 +33,12 @@ function MyVerticallyCenteredModal(props) {
 function SideBar(props) {
   const [name, setName] = useState('');
   const [modalShow, setModalShow] = useState(false);
+  // const [avatar, setAvatar] = useState('');
+
   useEffect(() => {
     const member = JSON.parse(localStorage.getItem('Member')) || [];
-    setName(member.MemberName);
+    setName(member.memberName);
+    // setAvatar(member.MemberAvatar);
   }, []);
   return (
     <>
@@ -43,6 +46,7 @@ function SideBar(props) {
         <div className="col-8 sideBarContent">
           <div>
             <img
+              // src={require({ avatar })}
               src={require('../images/avatar1.jpg')}
               style={{
                 width: '70%',

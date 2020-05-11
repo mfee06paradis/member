@@ -33,7 +33,7 @@ function MyVerticallyCenteredModal(props) {
 function Member(props) {
   const member = localStorage.getItem('Member') || [];
   const parseUserMember = JSON.parse(member);
-  const nameParseUserMember = parseUserMember.MemberName;
+  const nameParseUserMember = parseUserMember.memberName;
   const sliceNameParseUserMember = nameParseUserMember.slice(1);
   const [modalShow, setModalShow] = useState(false);
   return (
@@ -60,7 +60,7 @@ function Member(props) {
                 alt="membericon"
                 style={{
                   width: '70%',
-                  marginLeft: '2em',
+                  marginLeft: '3em',
                   borderRadius: '50%',
                   paddingBottom: '10px',
                 }}

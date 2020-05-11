@@ -3,7 +3,6 @@ import SideBar from '../components/SideBar';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import TWzipcode from 'react-twzipcode';
-import Footer from '../components/Footer';
 import '../styles/member.scss';
 import { Modal } from 'react-bootstrap';
 function MyVerticallyCenteredModal(props) {
@@ -107,10 +106,9 @@ function EditAccount(props) {
 
       const response = await fetch(request);
       const data = await response.json();
-      let x = memberID.slice(2);
-      parseInt(x);
+      let x = memberID;
       let y = x - 1;
-      console.log(data[y]);
+      // console.log(data[y]);
       let userdata = data[y];
       localStorage.setItem('Member', JSON.stringify(userdata));
     }
@@ -119,14 +117,14 @@ function EditAccount(props) {
 
   const getMemberFromLocalStorage = function () {
     let member = JSON.parse(localStorage.getItem('Member')) || [];
-    setName(member.MemberName);
-    setEmail(member.MemberEmail);
-    setGender(member.MemberSex);
-    setBirthday(member.MemberBirthday);
-    setPhone(member.MemberPhone);
-    setMemberID(member.MemberID);
-    setCounty(member.MemberAddress.substr(0, 3));
-    setAddress(member.MemberAddress.slice(3));
+    setName(member.memberName);
+    setEmail(member.memberEmail);
+    setGender(member.membersex);
+    setBirthday(member.memberBirthday);
+    setPhone(member.memberPhone);
+    setMemberID(member.memberId);
+    setCounty(member.memberAddress.substr(0, 3));
+    setAddress(member.memberAddress.slice(3));
     console.log(address);
   };
 
