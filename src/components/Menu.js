@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 import {
   Modal,
   Row,
@@ -15,10 +14,13 @@ import '../styles/navbar.scss';
 
 function Menu(props) {
   const [show, setShow] = useState(false);
+
   const [userData, setUserData] = useState([]);
   const [userEmail, setUserEmail] = useState([]);
   const [userPassword, setUserPassword] = useState([]);
   const [userRemember, setUserRemember] = useState(false);
+  const [checkorNot, setCheckorNot] = useState('');
+
   const [loginMessage, setLoginMessage] = useState('');
 
   const handleClose = () => {
@@ -31,6 +33,9 @@ function Menu(props) {
     if (userRemember === false) {
       setUserEmail('');
       setUserPassword('');
+      setCheckorNot('');
+    } else {
+      setCheckorNot('checked');
     }
   };
 
@@ -47,6 +52,14 @@ function Menu(props) {
       });
   }, []);
 
+  function isCartNumber() {
+    if (props.cartNumber === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   const lcstg = localStorage.getItem('Member');
 
   const isAuthTrueMenu = () => {
@@ -57,14 +70,12 @@ function Menu(props) {
     return (
       <>
         <Row className="navbar-icons">
-          <Col className="navbar-search">
-            <NavLink
-              activeClassName="active"
-              className="nav-link"
-              to="/Uielements"
-            ></NavLink>
-          </Col>
           <Col className="navbar-cart">
+            {isCartNumber() ? (
+              <div id="cartNumber">{props.cartNumber}</div>
+            ) : (
+              ''
+            )}
             <NavLink
               activeClassName="active"
               className="nav-link"
@@ -86,7 +97,7 @@ function Menu(props) {
             </NavLink>
           </Col>
           <Col className="navbar-logout">
-            <NavLink
+            {/* <NavLink
               activeClassName="active"
               className="nav-link"
               to="/Home"
@@ -95,7 +106,7 @@ function Menu(props) {
                 props.setIsAuth(false);
                 localStorage.clear();
               }}
-            ></NavLink>
+            ></NavLink> */}
           </Col>
         </Row>
       </>
@@ -106,13 +117,6 @@ function Menu(props) {
     return (
       <>
         <Row className="navbar-icons">
-          <Col className="navbar-search">
-            <NavLink
-              activeClassName="active"
-              className="nav-link"
-              to="/Uielements"
-            ></NavLink>
-          </Col>
           <Col className="navbar-cart">
             <NavLink
               activeClassName="active"
@@ -129,14 +133,14 @@ function Menu(props) {
               onClick={handleShow}
             ></NavLink>
           </Col>
-          <Col className="navbar-member" xs={4} md={6}>
+          <Col className="navbar-member" xs md={6}>
             <NavLink
               activeClassName="active"
               className="nav-link"
               to="/Home"
               onClick={handleShow}
             >
-              <p className="navbar-text-span phone-navbar">會員登入</p>
+              <p className="navbar-text-span">會員登入</p>
             </NavLink>
           </Col>
         </Row>
@@ -207,6 +211,15 @@ function Menu(props) {
 
       <div id="phone-navbar">
         {props.isAuth ? isAuthTrueMenu() : isAuthFalseMenu()}
+        <div
+          id="phone-Menu"
+          className="pc-navbar"
+          onClick={() => {
+            NavbarToggle.current.click();
+          }}
+        >
+          Menu
+        </div>
         <Navbar
           sticky="top"
           id="navbar"
@@ -214,7 +227,11 @@ function Menu(props) {
           bg="primary"
           expand="lg"
         >
-          <Navbar.Toggle aria-controls="basic-navbar-nav" ref={NavbarToggle} />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            ref={NavbarToggle}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <NavLink
@@ -269,7 +286,7 @@ function Menu(props) {
       <Modal show={show} onHide={handleClose} id="login-modal">
         <Modal.Header></Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form id="login-form">
             <InputGroup className="mb-2">
               <FormControl
                 type="text"
@@ -301,12 +318,14 @@ function Menu(props) {
             ) : (
               ''
             )}
+
             <div className="checkbox">
               <input
+                className="inp-cbx"
+                id="cbx"
                 type="checkbox"
-                id="check"
-                name="check"
-                value=""
+                style={{ display: 'none' }}
+                defaultChecked={checkorNot}
                 onChange={(e) => {
                   if (e.target.checked) {
                     setUserRemember(true);
@@ -315,7 +334,29 @@ function Menu(props) {
                   }
                 }}
               />
-              <label for="check">
+              <label className="cbx" for="cbx">
+                <span>
+                  <svg width="22px" height="28px" viewbox="0 0 12 9">
+                    <polyline points="1 10 7 20 17 1"></polyline>
+                  </svg>
+                </span>
+              </label>
+
+              {/* <input
+                type="checkbox"
+                id="check"
+                name="check"
+                value=""
+                defaultChecked={checkorNot}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setUserRemember(true)
+                  } else {
+                    setUserRemember(false)
+                  }
+                }}
+              /> */}
+              <label for="cbx">
                 <span></span>記住我
               </label>
             </div>
@@ -335,7 +376,9 @@ function Menu(props) {
                     }
                   });
                   //console.log(getUser)
-                  localStorage.setItem('Member', JSON.stringify(getUser));
+                  if (getUser !== undefined) {
+                    localStorage.setItem('Member', JSON.stringify(getUser));
+                  }
                   const isMember = userData.some((value) => {
                     if (
                       userEmail === value.memberEmail &&
@@ -350,7 +393,6 @@ function Menu(props) {
                     setTimeout(() => {
                       props.setIsAuth(true);
                       setShow(false);
-                      props.history.push('/member');
                     }, 500);
                   } else {
                     props.setIsAuth(false);
@@ -365,7 +407,9 @@ function Menu(props) {
             <div className="linktoRegister">
               還沒有帳號嗎？
               <span>
-                <NavLink to="/Register">點我註冊會員</NavLink>
+                <NavLink to="/MemberAdd" onClick={() => setShow(false)}>
+                  點我註冊會員
+                </NavLink>
               </span>
             </div>
           </Form>
@@ -375,4 +419,4 @@ function Menu(props) {
   );
 }
 
-export default withRouter(Menu);
+export default Menu;

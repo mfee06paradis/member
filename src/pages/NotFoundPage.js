@@ -1,33 +1,16 @@
-import React from 'react';
-import Banner from '../../back_up/components/Banner';
-
-import { withRouter } from 'react-router-dom';
-import { checkPropTypes } from 'prop-types';
-
-function NotFoundPage(props) {
-  return (
-    <>
-      <Banner pagename="頁面不存在" />
-
-      {/* 跳轉到其他頁面 */}
-      <button
-        onClick={() => {
-          props.history.push('/product');
-        }}
-      >
-        到產品頁
-      </button>
-
-      {/* 回到上一頁 */}
-      <button
-        onClick={() => {
-          props.history.goBack();
-        }}
-      >
-        回到上一頁
-      </button>
-    </>
-  );
+import React from 'react'
+import '../styles/NotFoundPage.scss'
+function NotFoundPage() {
+  return <>
+  <div className="error">
+    <h1>404 Error Page</h1>
+    <section className="error-container">
+      <span className="four"><span className="screen-reader-text">4</span></span>
+      <span className="zero"><span className="screen-reader-text">0</span></span>
+      <span className="four"><span className="screen-reader-text">4</span></span>
+    </section>
+    </div>
+  </>
 }
 
-export default withRouter(NotFoundPage);
+export default NotFoundPage

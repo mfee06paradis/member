@@ -1,121 +1,379 @@
 @import './variables.scss';
 
+.carousel {
+  @include phone-width {
+    margin-top: 2em;
+  }
+}
+
 .carousel-caption {
-    right: 15%;
-    top: 20%;
-    z-index: 10;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    text-align: right;
 
-    h1 {
-        color: $danger;
-        font-family: $font-family-title;
-    }
+  h1 {
+    color: $danger;
+    font-family: $font-family-title;
+    margin: 0;
+  }
 
-    h4 {
-        color: black;
-        font-family: $font-family-title;
-    }
+  h4 {
+    color: black;
+    font-family: $font-family-title;
+  }
 
-    p {
-        font-size: 0.8rem;
-        font-family: $font-family-base;
-    }
+  p {
+    font-size: 0.8rem;
+    font-family: $font-family-base;
+  }
 
-    button {
-        background: url(../images/home/Carousel-btn.svg) center no-repeat;
-        margin: 0;
-        padding: 0;
-        color: $primary;
-    }
+  button {
+    background: url(../images/home/Carousel-btn.svg) center no-repeat;
+    margin: 0;
+    padding: 0;
+    color: $primary;
+  }
 
-    button:hover {
-        background: url(../images/home/Carousel-btn-hover.svg) center no-repeat;
-        margin: 0;
-        padding: 0;
-        color: $white;
-    }
+  button:hover {
+    background: url(../images/home/Carousel-btn-hover.svg) center no-repeat;
+    margin: 0;
+    padding: 0;
+    color: $white;
+  }
 
-    button:focus {
-        outline: none;
-        filter: grayscale(10%) drop-shadow(0rem 0rem 0.2rem rgba(237, 145, 174, 1));
-    }
+  button:focus {
+    outline: none;
+    filter: grayscale(10%) drop-shadow(0rem 0rem 0.2rem rgba(237, 145, 174, 1));
+  }
 }
 
 .FirstSlide {
-    background: url(../images/home/Carousel01.jpg)center no-repeat;
+
+  @include pc-width {
+    background: url(../images/home/Carousel01.jpg) center no-repeat;
+    background-size: 100%;
     height: 100vh;
+  }
+
+  @include phone-width {
+    background: url(../images/home/Carousel01-phone.jpg) center no-repeat;
+    background-size: 100%;
+    height: 96vh;
+  }
+}
+
+.FirstSlide-text {
+  z-index: 10;
+  text-align: right !important;
+
+  h1 {
+    text-align: right !important;
+  }
+
+
+  @include pc-width {
+    right: 15%;
+    top: 10%;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    p {
+      color: $dark;
+    }
+
+  }
+
+  @include phone-width {
+    right: 10%;
+    top: 25%;
+
+    p {
+      color: white;
+    }
+
+  }
+
+
 }
 
 .SecondSlide {
-    background: url(../images/home/Carousel02.jpg)center no-repeat;
+
+  @include pc-width {
+    background: url(../images/home/Carousel02.jpg) center no-repeat;
+    background-size: 100%;
     height: 100vh;
+  }
+
+  @include phone-width {
+    background: url(../images/home/Carousel02-phone.jpg) center no-repeat;
+    background-size: 100%;
+    height: 96vh;
+  }
+}
+
+.SecondSlide-text {
+  left: 15%;
+  top: 20%;
+  z-index: 10;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  text-align: left !important;
+
+  h1 {
+    text-align: left;
+  }
+
+  p {
+    color: $primary;
+  }
+
+  @include phone-width {
+    top: 35%
+  }
 }
 
 .ThirdSlide {
-    background: url(../images/home/Carousel03.jpg)center no-repeat;
+
+  @include pc-width {
+    background: url(../images/home/Carousel03.jpg) center no-repeat;
+    background-size: 100%;
     height: 100vh;
+  }
+
+  @include phone-width {
+    background: url(../images/home/Carousel03-phone.jpg) center no-repeat;
+    background-size: 100%;
+    height: 96vh;
+  }
 }
 
+.ThirdSlide-text {
+  //right: 15%;
+  top: 43%;
+  z-index: 10;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  text-align: center !important;
+
+  h1 {
+    color: $success;
+  }
+
+  h4 {
+    color: $brown-light;
+  }
+
+  @include phone-width {
+    top: 48%
+  }
+}
 
 .view-height {
-    @include pc-width {
-        height: 100vh;
-    }
+  @include pc-width {
+    height: 100vh;
+  }
 
-    @include phone-width {
-        height: auto;
-    }
+  @include phone-width {
+    height: auto;
+  }
 }
 
 .home-second {
-    margin: 2rem;
+  margin: 3rem;
 }
 
 .home-second-width {
-    margin: 0 auto;
-    width: 70%;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .home-second-hover:hover {
-    transform: scale(1.1);
+  transform: scale(1.1) !important;
 }
 
 .home-second-top {
-    background: url(../images/home/home-top.svg) top left no-repeat;
-    height: 25%;
-    transform-origin: top left;
-    margin-left: 2rem;
-    margin-top: 3rem;
-    transform: rotate(335deg);
+  background: url(../images/home/home-top.svg) top left no-repeat;
+  transform-origin: top left;
+  transform: rotate(335deg);
+  text-align: left;
 
-    .home-second-top-text {
-        color: $pink-light;
-        font-family: $font-family-copperplate;
-        margin-left: 1.8rem;
-        padding-top: 0.2rem;
+  @media all and (min-width: 1290px) {
+    height: 7%;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    height: 8.5%;
+  }
+
+  // @include pc-width {
+  //   height: 7%;
+  // }
+
+  @include phone-width {
+    height: 7%;
+  }
+
+  .home-second {
+
+    @include pc-width {
+      margin-left: 2rem;
     }
+
+    @include phone-width {
+      margin-left: 0;
+    }
+  }
+
+  .home-second-top-text {
+    color: $pink-light;
+    font-family: $font-family-copperplate;
+
+    @media all and (min-width: 1290px) {
+      margin-left: 1.6rem;
+      padding-top: 0.1rem;
+      margin-top: 3rem;
+    }
+
+    @media all and (min-width: 390px) and (max-width: 1289px) {
+      margin-left: 1.5rem;
+      padding-top: 0.1rem;
+      margin-top: 1.5rem;
+    }
+
+    // @include pc-width {
+    //   margin-left: 1.6rem;
+    //   padding-top: 0.1rem;
+    //   margin-top: 3rem;
+    // }
+
+    @include phone-width {
+      margin-left: 1.4rem;
+      padding-top: 0rem;
+      margin-top: 0.8rem;
+    }
+  }
 }
 
 .home-second-item {
-    background: url(../images/home/home-item.svg) top center no-repeat;
-    height: 160%;
-    margin-top: -2rem;
+  background: url(../images/home/home-item.svg) top center no-repeat;
+  margin-top: -2rem;
+
+  @media all and (min-width: 1290px) {
+    height: 100%;
+    padding: 0rem;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    height: 70%;
+    padding: 0rem;
+  }
+
+  // @include pc-width {
+  //   height: 100%;
+  //   padding: 0rem;
+  // }
+
+  @include phone-width {
+    height: 50%;
+    padding: 7rem;
+  }
+
+  img {
+    @media all and (min-width: 1290px) {
+      width: 80%;
+      margin-top: 5rem;
+      margin-left: 3rem;
+    }
+
+    @media all and (min-width: 390px) and (max-width: 1289px) {
+      width: 85%;
+      margin-top: 1rem;
+      margin-left: 0rem;
+    }
+
+
+    // @include pc-width {
+    //   width: 80%;
+    //   margin-top: 5rem;
+    //   margin-left: 3rem;
+    // }
+
+    @include phone-width {
+      width: 11.5rem;
+      margin-top: -5.6rem;
+      margin-left: -5.5rem;
+    }
+  }
 }
 
 .home-second-item-text {
-    text-align: center;
-    margin-top: 1rem;
+  text-align: center;
+  margin-top: 1rem;
 
-    h3 {
-        color: $secondary;
-        font-family: $font-family-title;
-    }
+  h3 {
+    color: $secondary;
+    font-family: $font-family-title;
+  }
 
-    p {
-        color: $danger;
-        font-family: $font-family-title;
-        margin-top: -0.5rem;
-    }
+  p {
+    color: $danger;
+    font-family: $font-family-title;
+    margin-top: -0.5rem;
+  }
+}
+
+.home-second-item-1 {
+  background: url(../images/home/Home-2-1.png) center no-repeat;
+  background-size: 5rem;
+}
+
+#home-youtube {
+
+  @media all and (min-width: 1290px) {
+    padding-top: 6rem;
+    padding-left: 15rem;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    padding-top: 5rem;
+    padding-left: 8rem;
+  }
+
+  // @include pc-width {
+  //   padding-top: 6rem;
+  //   padding-left: 15rem;
+  // }
+
+  @include phone-width {
+    padding: 1.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+.home-third-width {
+  margin: 0;
+}
+
+.home-context-side {
+  width: 100%;
+
+  @media all and (min-width: 1290px) {
+    margin-top: 27rem;
+    margin-left: -8rem;
+  }
+
+  @media all and (min-width: 390px) and (max-width: 1289px) {
+    margin-top: 15rem;
+    margin-left: -5rem;
+  }
+
+  // @include pc-width {
+  //   margin-top: 27rem;
+  //   margin-left: -8rem;
+  // }
+
+  @include phone-width {
+    margin-top: -2rem;
+  }
+}
+
+.home-context-side-text {
+  text-align: center;
 }

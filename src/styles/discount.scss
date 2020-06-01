@@ -1,0 +1,112 @@
+@import "./variables.scss";
+
+.disFirstSlide {
+  background: url(../images/discount/demo1.jpg) center no-repeat;
+  height: 13vh;
+}
+
+.disSecondSlide {
+  background: url(../images/discount/demo2.jpg) center no-repeat;
+  height: 13vh;
+}
+
+.disThirdSlide {
+  background: url(../images/discount/demo3.jpg) center no-repeat;
+  height: 13vh;
+}
+
+.disFourSlide {
+  background: url(../images/discount/demo4.jpg) center no-repeat;
+  height: 13vh;
+}
+
+.disFiveSlide {
+  background: url(../images/discount/demo5.jpg) center no-repeat;
+  height: 13vh;
+}
+
+.pdimg {
+  z-index: 2;
+}
+
+.bgimg {
+  position: absolute;
+  z-index: 1;
+}
+
+.card {
+  border: none;
+}
+
+.card:hover {
+  .pdimg {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in 0s;
+  }
+
+  .bgimg {
+    transform: scaleY(2);
+    transition: all 0.3s ease-in 0s;
+  }
+}
+
+.dis {
+  //margin-top: 3rem;
+  padding-top: 4rem;
+  height: 100vh;
+  background-color: $white;
+}
+
+.disMenu2 {
+  margin-top: 20px;
+}
+
+.card-deck {
+  margin-left: 15px;
+}
+
+.menu-title {
+  p {
+    position: relative;
+    left: 20px;
+    text-align: center;
+    font-family: $font-family-title;
+    font-weight: normal;
+    line-height: 5px;
+    color: $red-mid;
+  }
+}
+
+.menu-img {
+  height: 30px;
+}
+
+.menu-img :hover {
+  background: url(../images/menu.svg) left no-repeat;
+}
+
+.disImg {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .disMenu2 {
+    display: none;
+  }
+
+  .disImg {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .disMenu1 {
+    display: none;
+  }
+
+  .disImg {
+    margin-left: 50px;
+    margin-right: 0px;
+  }
+}

@@ -1,21 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import TWzipcode from 'react-twzipcode';
 
-function Address() {
-  const [county, setCounty] = useState('');
-  const [address, setAddress] = useState('');
-  const [addressData, setAddressData] = useState('');
-  const handleChange = (data) => {
-    setAddress(data.county + data.district + data.zipcode);
+class Address extends Component {
+  update = (value) => {
+    const newMember = value;
+    localStorage.setItem('Member', JSON.stringify(newMember));
   };
-  useEffect(() => {
-    const member = JSON.parse(localStorage.getItem('Member')) || [];
-    setCounty(member.MemberAddress.substr(0, 3));
-    setAddress(member.MemberAddress);
-  }, []);
+  handleChange = (data) => {
+    let addressData = data.county + data.district + data.zipcode;
+    console.log(addressData);
+    // document.getElementById('address').value = addressData;
 
-  return (
-    <>
+    // this.update({
+    //   MemberID: '003',
+    //   MemberName: '杜子晴',
+    //   MemberPW: '1234abcd',
+    //   MemberSex: 'F',
+    //   MemberBirthday: '1991-03-24',
+    //   MemberPhone: '0994060776',
+    //   MemberEmail: 'Olivia54685@hotmail.com',
+    //   MemberAddress: addressData,
+    //   MemberLevel: 'Member',
+    //   MemberCreatedAt: '2020-01-11',
+    //   MemberAvatar: '../images/avatar1.jpg',
+    // });
+  };
+
+  render() {
+    const member = localStorage.getItem('Member') || [];
+    const parseUserMember = JSON.parse(member);
+    const address = parseUserMember.MemberAddress.substr(0, 3);
+    const address2 = parseUserMember.MemberAddress;
+    return (
       <div className="row accountRow">
         <div className="col-1"></div>
         <div className="col-11">地址</div>
@@ -27,7 +43,7 @@ function Address() {
         </div>
         <div>
           <TWzipcode
-            countyValue={county}
+            countyValue={address}
             districtValue={''}
             zipcodePlaceholder={'郵遞區號'}
             css={[
@@ -35,43 +51,29 @@ function Address() {
               'form-control district-sel',
               'form-control zipcode',
             ]}
-            handleChangeCounty={handleChange}
-            handleChangeDistrict={handleChange}
-            handleChangeZipcode={handleChange}
+            handleChangeCounty={this.handleChange}
+            handleChangeDistrict={this.handleChange}
+            handleChangeZipcode={this.handleChange}
           />
         </div>
         <div className="col-12"></div>
         <div className="col-1"></div>
-        <span className="col-lg-3 col-5">
-          <input type="text" style={{ height: '2em' }} value={address} />
-        </span>
-        <span className="addressPC">
+        <div className="col-10">
           <input
             type="text"
-            style={{ height: '2em', width: '108%' }}
-            onChange={(event) => {
-              setAddressData(address + event.target.value);
-            }}
-            onBlur={() => {
-              sessionStorage.setItem('address', JSON.stringify(addressData));
-            }}
-          />
-        </span>
-        <div className="col-5 addressMobile" style={{ display: 'none' }}>
-          <input
-            type="text"
-            style={{ height: '2em', width: '108%' }}
-            onChange={(event) => {
-              setAddressData(address + event.target.value);
-            }}
-            onBlur={() => {
-              sessionStorage.setItem('address', JSON.stringify(addressData));
+            style={{ height: '6em' }}
+            id="address"
+            placeholder={address2}
+            // onBlur={checkAddress}
+            onChange={() => {
+              console.log(this.data);
             }}
           />
+          <span id="addressMesg"></span>
         </div>
       </div>
-    </>
-  );
+    );
+  }
 }
 
 export default Address;

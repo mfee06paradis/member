@@ -5,6 +5,28 @@
 //     border: solid 1px black;
 // }
 
+.avatarIcon {
+    width: 70%;
+    margin-Top: 10px;
+    border-Radius: 50%;
+    padding-Bottom: 10px;
+}
+
+.avatarIconMobileEdit {
+    width: 100%;
+    margin-Left: 4.5em;
+    border-Radius: 50%;
+    padding-Bottom: 10px;
+}
+
+.avatarIconMobile {
+    width: 70%;
+    margin-Left: 1.5em;
+    border-Radius: 50%;
+    padding-Bottom: 10px;
+
+}
+
 .sideBarText {
     margin-top: 20px;
     font-size: 20px;
@@ -79,6 +101,8 @@
 }
 
 @media screen and (max-width: 1000px) {
+
+    .avatarIcon,
     .sideBar {
         display: none;
     }
@@ -90,11 +114,14 @@
     .registerBox2 {
         display: flex !important;
         position: absolute;
-        top: -5%;
+        top: -2%;
+        right: 10%;
         max-width: 100%;
     }
 
-    .mobileIcon {
+    .mobileIcon,
+    .avatarIconMobile,
+    .avatarIconMobileEdit {
         display: block !important;
         max-width: 100%;
     }
@@ -220,10 +247,6 @@
     height: 4em;
 }
 
-.addressMobile {
-    height: 14em;
-}
-
 .lastRow {
     height: 6em;
 }
@@ -308,7 +331,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-
+    .delete,
     .brandText,
     .addressPC,
     .creditCardButton,
@@ -316,7 +339,7 @@
     .creditCardBlank2 {
         display: none;
     }
-
+    .deleteMobile,
     .brandBlank,
     .addressMobile,
     .creditCardBlank {
@@ -392,8 +415,14 @@ input {
     right: 3rem;
 }
 
-td {
-    @include phone-width {
-        display: flex !important;
-    }
+
+.divLeft {
+    text-align: left !important;
+}
+
+.favoriteText {
+    font-Family: Naikai;
+    font-Size: 18px;
+    color: #d8b479;
+    text-align: center;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
 function ProductList() {
   const loading = (
@@ -9,7 +9,7 @@ function ProductList() {
         </div>
       </div>
     </>
-  );
+  )
 
   const display = (
     <>
@@ -29,8 +29,8 @@ function ProductList() {
             </p>
             <p className="card-text text-danger">NTD 15000元</p>
           </div>
-          <div className="card-footer">
-            <button type="button" className="btn btn-success">
+          <div class="card-footer">
+            <button type="button" class="btn btn-success">
               加入購物車
             </button>
           </div>
@@ -49,8 +49,8 @@ function ProductList() {
             </p>
             <p className="card-text text-danger">NTD 200元</p>
           </div>
-          <div className="card-footer">
-            <button type="button" className="btn btn-success">
+          <div class="card-footer">
+            <button type="button" class="btn btn-success">
               加入購物車
             </button>
           </div>
@@ -70,21 +70,21 @@ function ProductList() {
             </p>
             <p className="card-text text-danger">NTD 21000元</p>
           </div>
-          <div className="card-footer">
-            <button type="button" className="btn btn-success">
+          <div class="card-footer">
+            <button type="button" class="btn btn-success">
               加入購物車
             </button>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 
   return (
     <>
       <div className="container">{display}</div>
     </>
-  );
+  )
 }
 
-export default ProductList;
+export default ProductList

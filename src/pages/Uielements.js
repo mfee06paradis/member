@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Modal, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Modal, Row, Col } from 'react-bootstrap'
 
 function MyVerticallyCenteredModal(props) {
   return (
@@ -33,7 +33,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Body>
       </div>
     </Modal>
-  );
+  )
 }
 
 function Uielements() {
@@ -48,8 +48,8 @@ function Uielements() {
         </div>
         <div className="main-title-after"></div>
       </>
-    );
-  };
+    )
+  }
   //－－－－－－－－－－圓圈盒子－－－－－－－－－－－－－－－－－－
   const box_circle = (eng, chs) => {
     return (
@@ -62,10 +62,10 @@ function Uielements() {
           <div className="box-circle-img"></div>
         </div>
       </>
-    );
-  };
+    )
+  }
 
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = React.useState(false)
 
   return (
     <>
@@ -194,7 +194,7 @@ function Uielements() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default Uielements;
+export default Uielements
